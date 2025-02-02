@@ -1,0 +1,76 @@
+body {
+    background: #fafafa;
+    color: #333333;
+    margin: 0px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+    font-family: tahoma;
+
+  }
+  
+
+  /* navigation bar stuff */
+
+ 
+  .nav-bar ul {
+    list-style: none; /* Remove bullets */
+    display: flex; /* Align links horizontally */
+    justify-content: center; /* Center the links */
+    flex-grow: 1; /* Allow links to take up remaining space between logo and profile picture */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    
+}
+
+.nav-bar a {
+  text-decoration: none; /* Remove underline */
+  color: #000; /* Set link color */
+  font-size: 40px; /* Adjust font size */
+  padding: 5px 10px; /* Add padding around links */
+}
+
+  .nav-bar a:hover {
+    color: rgb(31, 80, 63);
+  }
+
+  .nav-bar li {
+    margin: 0 20px; /* Space between each link */
+}
+
+
+
+  .nav-bar {
+    display: flex; /* Align items horizontally */
+    justify-content: space-between; /* Space between logo, links, and profile picture */
+    align-items: center; /* Vertically center all items */
+    padding: 50px 20px; /* Padding around the navbar */
+    background-color: #B5C2AD; /* Background color */
+    height: 80px; /* Fix the navbar height */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center; /* Vertically center the logo */
+}
+  
+#logonav {
+  height: 150px; /* Resize the logo */
+  width: 150px; /* Maintain aspect ratio */
+  margin-right: 400px; /* Space between the logo and links */
+
+}
+#profilepic{
+  width:80px;
+  height:80px;
+  display: flex;
+  margin-left: 800px;
+  align-items: center;
+}
+
+.profilepic-container {
+  display: flex;
+  align-items: center; 
+}
