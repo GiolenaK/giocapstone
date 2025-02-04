@@ -23,29 +23,183 @@
     <title>Hello, world!</title>
   </head>
 
-  <header>
-        <nav class="nav-bar">
-        
-            <div class="logo-container">
-                <img id="logonav" src="{% static 'users/images/logo.png' %}" alt="The logo"></div>
-            <ul>
-                <li><a href="#"> Pets </a></li>
-                <li><a href="#"> Pet Needs </a></li>
-                <li><a href="#"> About Us </a></li>
-                <li><a href="#"> FAQ </a></li>
-                <li><a href="#"> Become a Foster Parent </a></li>
-            </ul>
-            <div class="profilepic-container">
-                <img id="profilepic" src="{% static 'users/images/userprofile.png' %}" alt="My profile photo"></div>
-            <ul>
-        </nav>
-</header>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+            <img id="navbarlogo" src="{% static 'users/images/logo.png' %}" alt="Logo" width="100px" height="auto">
+        </a>
 
-  <body>
-    <div class="col-md-8">
-        {% block content %}{% endblock %}
+        <!-- Navbar Links -->
+        <div class="d-flex align-items-center">
+            <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pets</a>
+                </li>
+                <div class="navbar-divider"></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pet Needs</a>
+                </li>
+                <div class="navbar-divider"></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+                <div class="navbar-divider"></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">FAQ</a>
+                </li>
+                <div class="navbar-divider"></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Become a Foster Parent</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Profile Icon -->
+        <div class="navbar-profile">
+            <a href="#">
+                <img src="{% static 'users/images/userprofile.png' %}" alt="Profile" width="100px" height="auto">
+            </a>
+        </div>
     </div>
+</nav>
+
+ 
+<body>
+
+  <div class="container col-md-8 col-lg-10">
+    <h1>HELLOO TEST</h1>
+    <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor sagittis lectus, eu ullamcorper metus lobortis quis. Praesent neque turpis, aliquet in rutrum non, mattis eu orci. Mauris hendrerit at lacus quis condimentum. Ut fringilla urna eleifend, tristique leo eget, eleifend augue. Fusce aliquam eu mi vitae pharetra. Fusce ullamcorper erat hendrerit, hendrerit dolor id, tristique enim. Donec malesuada ipsum vitae dignissim suscipit. Donec libero nisl, viverra in vulputate non, dictum at tortor. Maecenas at tempor nibh. Pellentesque vulputate lobortis nulla. Praesent urna risus, vehicula a metus vitae, iaculis vulputate lorem. Cras efficitur faucibus lectus, non bibendum eros pulvinar at. Integer accumsan nunc nec eleifend tempor. Phasellus ex ante, rhoncus vel posuere eu, condimentum a ipsum.
+
+      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam risus nulla, imperdiet suscipit mollis at, ultrices sit amet lacus. Mauris ut lacus maximus, iaculis velit sed, scelerisque diam. Praesent vitae nunc dignissim, mattis mi at, ornare est. Ut et mollis nisl, in pellentesque justo. Vivamus eget risus rhoncus, varius est at, ullamcorper felis. Curabitur sit amet facilisis erat. Donec id mattis augue, eu imperdiet dui. Ut aliquet diam et magna accumsan congue. Quisque interdum rhoncus pretium. Integer sit amet tellus in lacus porttitor blandit.
+      
+      Aenean velit massa, aliquam ut nunc sit amet, dapibus iaculis nibh. Phasellus molestie nisl id urna tempor, nec pulvinar mi pretium. Nulla dui nibh, viverra vel placerat a, volutpat sit amet mi. Aenean eu lectus ac risus rhoncus lacinia eu egestas odio. Nam at orci eget ante ultrices euismod et finibus enim. Morbi vitae iaculis purus, nec semper neque. Nunc eget nisi vitae justo vestibulum imperdiet.
+      
+      Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis non mauris in ex eleifend rhoncus. Nam egestas, lacus id feugiat iaculis, ante libero luctus velit, id porttitor diam nulla sed ex. Phasellus turpis tellus, gravida in lacinia sit amet, condimentum nec metus. Maecenas aliquet lacinia orci, vel suscipit orci. Fusce ac nisi imperdiet, laoreet tellus non, placerat felis. Fusce at egestas leo. Mauris laoreet nisi lorem. Curabitur a commodo nisl, a tristique justo. Proin in mattis diam. Fusce at pellentesque nibh, ut ultrices nisl. Duis finibus, libero eu auctor auctor, dolor sapien tincidunt dolor, vel lobortis ipsum libero ac orci. Nullam ultricies hendrerit nisi ut dictum. Aliquam mollis at eros sit amet ultrices. Proin leo lorem, posuere a vehicula non, tempus a erat. Cras accumsan eu odio non rutrum.
+      
+      Maecenas convallis efficitur magna, id eleifend lectus congue eu. Sed vulputate dapibus ipsum id rutrum. Maecenas sodales neque nec elit tincidunt, ac rhoncus ante eleifend. Donec tristique sit amet velit in fringilla. Mauris malesuada, odio quis aliquet vestibulum, sapien justo maximus nunc, sed egestas odio mauris quis mauris. Vestibulum pharetra sodales nunc at tincidunt. Morbi vitae venenatis arcu.</P>
+  </div>
+
+    <footer id="myfooter" class="footer col-12 justify-content center ">
+        <div class="container">
+            <!-- Logo and Title Row -->
+            <div class="row footer-logo-row">
+                <div class="col-8">
+                    <img src="{% static 'users/images/logo.png' %}" alt="Logo" width="100px" height="auto">
+                    <h5>FurryFriends</h5>
+                </div>
+            </div>
+            <!-- Footer Content Row -->
+            <div class="row text-left">
+                <!-- Support Us  -->
+                <div class="col-md-2 mb-4">
+                    <h6>Support Us</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">PAGE 1</a></li>
+                        <li><a href="#">PAGE 2</a></li>
+                        <li><a href="#">PAGE 3</a></li>
+                        <li><a href="#">PAGE 4</a></li>
+                    </ul>
+                </div>
+                <!-- Find Us  -->
+                <div class="col-md-2 mb-4">
+                    <h6>Find Us</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Shop</a></li>
+                    </ul>
+                </div>
+                <!-- Shelters  -->
+                <div class="col-md-4">
+                    <h6>Shelters</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Street 1</a></li>
+                        <li><a href="#">Street 2</a></li>
+                    </ul>
+                    <!-- Map -->
+                    <div class="map-container border">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=..." 
+                            frameborder="0" 
+                            style="border:0; width: 100%; height: 100%;" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
     
+        <!-- Bootstrap Bundle JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
+    
+
+
+
+
+
+
+
+
+
+<!-- 
+    <footer class="footer">
+      <div class="footer-container">
+          
+          <div class="footer-section">
+            <img id="footerlogo" src="{% static 'users/images/logo.png' %}" alt="The logo"></div>
+              <h3 class="footer-title">FurryFriends</h3>
+          </div>
+  
+            <div class="footer-section">
+                <h4 class="footer-heading">Support Us</h4>
+                <ul class="footer-links">
+                    <li><a href="#">PAGE 1</a></li>
+                    <li><a href="#">PAGE 2</a></li>
+                    <li><a href="#">PAGE 3</a></li>
+                    <li><a href="#">PAGE 4</a></li>
+                </ul>
+            </div>
+          
+          
+            <div class="footer-section">
+                <h4 class="footer-heading">Find Us</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Shop</a></li>
+                </ul>
+            </div>
+
+            
+            <div class="footer-section">
+                <h4 class="footer-heading">Shelters</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Street 1</a></li>
+                    <li><a href="#">Street 2</a></li>
+                </ul>
+                <img src="map.png" alt="Map" class="footer-map">
+
+            </div>
+          </div>
+   
+  </footer>
+  
+    Logo and Brand Name -->
 
 
 
