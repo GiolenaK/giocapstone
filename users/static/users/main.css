@@ -1,17 +1,18 @@
 .navbar {
   background-color: #91b491 !important;
   background-image: none !important; /* Override any gradient or image */
+  margin-bottom: 15px;
 }
 
 .navbar-nav{
   align-items: center;
+  
 }
 
 .nav-link {
   color: black;
-  font-weight: bold;
   font-size: 25px;
-  
+  font-family: 'Montserrat';font-size: 22px;  /* TO DO: MAKE THIS WORK */
 }
 .nav-link:hover {
   color: #555;
@@ -71,21 +72,20 @@ body{
 }
 
 #myfooter {
+  margin-top:15px;
   display: flex;
   justify-content: center;
-  position: absolute ; 
+  position: relative ; 
   align-items: flex-start;
-  
+  bottom: 0px; /* AMEN */
+  height: 100px;
 
 }
 
-.container{
-  flex:1;
-}
 
 html,body {
-  height:100%;
-  display:flex;
+  height:100% !important;
   margin:0;
-  flex-direction: column;
 }
+
+
