@@ -21,4 +21,6 @@ def badge(request):
     badgestatus6 = {'status': 'None'}
     context = badgestatus6
     return render(request, 'users/badge.html',{'status':context})
-   
+
+def editprofile(request):
+   return render(request, 'users/editprofile.html')

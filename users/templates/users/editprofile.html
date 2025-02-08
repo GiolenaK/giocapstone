@@ -1,0 +1,116 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+
+
+{% block head %}
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+<style>
+    
+    
+    h2{
+        font-family: 'Montserrat';
+       
+    }
+
+    body{
+        font-family: 'Comfortaa' !important;
+    }
+
+    .form-group{
+        max-width: 60%;
+        
+    }
+
+    input{
+        background-color: #FFFED7 !important;
+        border-radius: 15px !important;
+        width: 70%;
+        height: 50px;
+        box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.2);
+        font-family: 'Comfortaa';
+
+    }
+
+    #image-button{
+        background-color: #ACE791;
+        border-color: #433B2D !important;
+        border-radius:15px !important;
+        border-width: 2px !important;
+        height: 50px;
+    }
+
+    #save-button{
+        background-color: #ACE791;
+        border-color: #433B2D !important;
+        border-radius:15px !important;
+        border-width: 2px !important;
+        height: 50px;
+        color:black;
+        margin-top:5% !important;
+    }
+
+    .vl {
+        border-left: 2px solid rgb(3, 3, 3);
+        height: 400px;
+        margin-right: 10%;
+        
+    }
+
+    #section{
+        margin-top: 5%;
+    }
+
+    label{
+        font-size: large;
+    }
+    
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+<body>
+    <h2>Edit Profile Information</h2>
+    <div id="section" class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <img class="img-fluid rounded-circle mb-3" src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="200px" height="auto">
+            <div>
+                <button id="image-button" type="button" class="btn rounded-pill">CHANGE IMAGE</button>
+            </div>    
+        </div>
+
+        <div class="vl"></div>
+
+        <div class="col-md-5 ">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="username help" placeholder="Enter Username">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">E-mail</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword2">Repeat Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                </div>
+                <div>
+                <button id="save-button" type="submit" class="btn btn-primary">SAVE CHANGES</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+{% endblock content %}
