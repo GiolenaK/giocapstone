@@ -22,7 +22,7 @@
     }
 
     h1,h2{
-        font-family: 'Monsterrat';
+        font-family: 'Montserrat';
     }
 
 
@@ -41,7 +41,7 @@
         <h2>oops</h2>   
     {% endif %}
     -->
-{% if user.username == "Giolena" %}
+{% if user.status == "Fosterer" %}
 <div id ="section" class="row justify-content-center align-items-center">
     <div class="col-md-5 text-center">
         <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
@@ -55,17 +55,31 @@
     </div>
 
 </div>
-    
-{% elif user.username == "Kat" %}
+
+
+{% elif user.status == "Admin" %}
 <div id ="section" class="row justify-content-center align-items-center">
     <div class="col-md-5 text-center">
         <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-        <h3>Kat</h3>
-        <h2><b>Fosterer</b></h2>
+        <h3>Giolena</h3>
+        <h2><b>Admin</b></h2>
 </div>
     <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
         <button type="button" class="btn rounded-pill">Edit Profile Information</button>
-        <button type="button" class="btn rounded-pill">View Fostering History</button>
+        <button type="button" class="btn rounded-pill">View Badge</button>
+    </div>
+
+</div>
+
+{% elif user.status == "Staff" %}
+<div id ="section" class="row justify-content-center align-items-center">
+    <div class="col-md-5 text-center">
+        <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
+        <h3>Giolena</h3>
+        <h2><b>Staff</b></h2>
+</div>
+    <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
+        <button type="button" class="btn rounded-pill">Edit Profile Information</button>
         <button type="button" class="btn rounded-pill">View Badge</button>
     </div>
 
@@ -75,12 +89,11 @@
 <div id ="section" class="row justify-content-center align-items-center">
     <div class="col-md-5 text-center">
         <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-        <h3>Who</h3>
-        <h2><b>Fosterer</b></h2>
+        <h3>Giolena</h3>
+        <h2><b>User</b></h2>
 </div>
     <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
         <button type="button" class="btn rounded-pill">Edit Profile Information</button>
-        <button type="button" class="btn rounded-pill">View Fostering History</button>
         <button type="button" class="btn rounded-pill">View Badge</button>
     </div>
 
