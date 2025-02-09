@@ -1,0 +1,187 @@
+{% extends "users/base.html" %} 
+{% load static %} 
+
+{% block head %}
+
+<style>
+  #dog-section,#cat-section {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    width: 80%; 
+    margin: 0 auto; 
+    text-align: left;
+}
+
+    #dog-section h2,#cat-section h2{
+        margin-bottom: 3rem;
+    }
+
+  .section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+  }
+
+
+  p{
+    font-size:18px;
+  }
+ 
+    hr {
+    border-top: 1px solid rgb(0, 0, 0);
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 80%;
+}
+</style>
+
+{% endblock%} 
+
+{% block content %}
+<div class="content col-12 ">
+    <div id="dog-section" class="col-10 ">
+    
+    <div class="container mt-4 ">
+        <!-- Nutrition Section -->
+        <div class="row align-items-center mb-4">
+        <div class="col-md-9">
+            <h2><u>Dog Care</u></h2>
+            <h3><b>Nutrition</b></h3>
+            <p>
+            Providing a nutritious diet is one of the most important aspects of dog care.<br>
+            Avoid feeding your dog table scraps, especially foods that are toxic to them.<br>
+            Choose high-quality dog food that meets their age, size, and breed requirements.
+            </p>
+        </div>
+        <div class="col-md-3 text-md-end text-center">
+            <img src="{% static 'pets/images/dogfood.png' %}" alt="dog food icon" class="img-fluid" style="max-width: 60px;">
+        </div>
+        </div>
+    
+        <!-- Exercise Section -->
+        <div class="row align-items-center mb-4 flex-row-reverse text-md-right">
+        <div class="col-md-9">
+            <h3><b>Exercise</b></h3>
+            <p>
+            Dogs thrive on regular exercise to keep their bodies and minds in top shape.<br>
+            This includes daily walks, runs, or play sessions that match their energy levels.<br>
+            High-energy breeds may need additional activities, like hiking and fetch games.
+            </p>
+        </div>
+        <div class="col-md-3 text-md-start text-center">
+            <img src="{% static 'pets/images/dogtoy.png' %}" alt="dog toy icon" class="img-fluid" style="max-width: 60px;">
+        </div>
+        </div>
+    
+        <!-- Grooming Section -->
+        <div class="row align-items-center mb-4">
+        <div class="col-md-9">
+            <h3><b>Grooming</b></h3>
+            <p>
+            Brush your dog’s coat to prevent tangles and keep their hair shiny.<br>
+            Bathing should be done every few weeks, using a dog-friendly shampoo.<br>
+            Regular nail trims, ear cleanings, and dental care are a crucial part in dog care.
+            </p>
+        </div>
+        <div class="col-md-3 text-md-end text-center">
+            <img src="{% static 'pets/images/doggrooming.png' %}" alt="dog grooming icon" class="img-fluid" style="max-width: 60px;">
+        </div>
+        </div>
+   
+
+    
+    <!-- Health  Section -->
+        <div class="row align-items-center mb-4 flex-row-reverse text-md-right">
+        <div class="col-md-9">
+            <h3><b>Health</b></h3>
+            <p>
+                Regular veterinary visits are a cornerstone of dog care.<br>
+                Schedule check-ups at least once a year to monitor their health.<br>
+                Always be attentive to changes in your dog’s behavior, appetite, or energy levels.
+            </p>
+        </div>
+        <div class="col-md-3 text-md-start text-center">
+        <img src="{% static 'pets/images/doglove.png' %}" alt="dog with a heart on its head icon" class="img-fluid" style="max-width: 60px;">
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<hr>
+
+
+
+
+    <div id="cat-section" class="col-10">
+        
+        <div class="container mt-4">
+        <!-- Nutrition Section -->
+        <div class="row align-items-center mb-4">
+            <div class="col-md-9">
+            <h2><u>Cat Care</u></h2>
+            <h3><b>Nutrition</b></h3>
+            <p>
+                Cats require a diet rich in protein and nutrients to support their health. <br>
+                Choose a high-quality cat food that aligns with their age and activity levels. <br>
+                Always keep their water bowl fresh and accessible, avoid toxic foods.
+            </p>
+            </div>
+            <div class="col-md-3 text-md-end text-center">
+            <img src="{% static 'pets/images/catfood.png' %}" alt="cat food icon" class="img-fluid" style="max-width: 60px;">
+            </div>
+        </div>
+        
+        <!-- Exercise Section -->
+        <div class="row align-items-center mb-4 flex-row-reverse text-md-right">
+            <div class="col-md-9">
+            <h3><b>Exercise</b></h3>
+            <p>
+                    Provide a variety of toys to encourage play.<br>
+                    Cats may be independant but still require exercises.<br>
+                    Having scratching posts allows physical activity and mental stimulation. 
+            </p>
+            </div>
+            <div class="col-md-3 text-md-start text-center">
+            <img src="{% static 'pets/images/yarn.png' %}" alt="yarn toy icon" class="img-fluid" style="max-width: 60px;">
+            </div>
+        </div>
+        
+        <!-- Grooming Section -->
+        <div class="row align-items-center mb-4">
+            <div class="col-md-9">
+            <h3><b>Grooming</b></h3>
+            <p>
+                Cats are generally self-groomers, but they still benefit from human assistance.<br>
+                Regular brushing helps control shedding and prevents hairballs.<br>
+                Trim their nails every few weeks to prevent overgrowth and scratching issues.
+            </p>
+            </div>
+            <div class="col-md-3 text-md-end text-center">
+            <img src="{% static 'pets/images/catgrooming.png' %}" alt="cat grooming icon" class="img-fluid" style="max-width: 60px;">
+            </div>
+        </div>
+        
+        
+        <!-- Health  Section -->
+        <div class="row align-items-center mb-4 flex-row-reverse text-md-right">
+        <div class="col-md-9">
+            <h3><b>Health</b></h3>
+            <p>
+                Veterinary care is vital for keeping your cat healthy and happy.<br>
+                Always be attentive to changes in your cat’s behavior, appetite, or energy levels.<br>
+                Pay attention to changes in behavior, eating habits, or litter box use.
+            </p>
+        </div>
+        <div class="col-md-3 text-md-start text-center">
+            <img src="{% static 'pets/images/catlove.png' %}" alt="cat with a heart on its head icon" class="img-fluid" style="max-width: 60px;">
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
