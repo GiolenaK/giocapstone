@@ -1,0 +1,76 @@
+{% extends "users/base.html" %} 
+{% load static %} 
+
+
+
+
+{% block head %} 
+<style>
+  
+    #contact-us{
+        text-align:center;
+        margin-top:4rem;
+    }
+
+    #titlesection{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap: 0.5rem;
+        text-align:center;
+        margin-top:3rem;
+        margin-bottom:3rem;
+    }
+
+    #text{
+        margin-right: 5rem;
+    }
+   
+</style>
+
+{% endblock%} 
+
+{% block content %}
+
+<div id="titlesection">
+
+    <img id="grass-left" src="{% static 'pets/images/grass.png' %}" alt="grass image" width="100px" height="auto" >
+
+    <h2 id="title">About Us</h2>
+
+    <img id="grass-left" src="{% static 'pets/images/grass2.png' %}" alt="grass image" width="100px" height="auto" >
+
+</div>
+<div class="text">
+    <p>
+    Welcome to FurryFosters where love and second chances come together. Founded
+    with a passion for animal welfare, we are dedicated to rescuing,
+    rehabilitating, and rehoming cats and dogs in need. Our mission is to provide
+    a safe haven for abandoned, neglected, and stray animals while connecting them
+    with loving forever homes.
+    </p>
+    <p>
+    At FurryFosters, we believe every pet deserves a chance to thrive. Our team of
+    devoted staff and volunteers works tirelessly to ensure each animal receives
+    the care, attention, and compassion they deserve. From veterinary services to
+    daily enrichment, we strive to meet their physical and emotional needs.
+    </p>
+    <p>
+    We also focus on educating our community about responsible pet ownership and
+    the importance of spaying and neutering to reduce pet overpopulation. Through
+    outreach programs, events, and partnerships, we aim to create a world where
+    every animal is valued and cared for.
+    </p>
+    <p>
+    Whether you're looking to adopt, foster, volunteer, or donate, we invite you
+    to join us in making a difference. Together, we can change lives—one paw at a
+    time. Thank you for supporting our mission to give these wonderful animals the
+    loving homes they deserve.
+    </p>
+
+    <p id="contact-us"><b>Feel free to <u>contact us</u> regarding any concerns!</b></p>
+</div>
+
+
+
+{% endblock content %}
