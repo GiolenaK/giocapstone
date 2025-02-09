@@ -10,7 +10,7 @@
 }
 
 .nav-link {
-  color: black;
+  color: black !important;
   font-size: 25px;
   font-family: 'Montserrat';font-size: 22px;  /* TO DO: MAKE THIS WORK */
 }
@@ -81,9 +81,17 @@ body{
 }
 
 
-html,body {
+html,body{
   height:100% !important;
   margin:0;
+   font-family: 'Comfortaa' !important;
+}
+
+h5,h6{
+  color:black !important;
 }
 
 
+h2,h3{
+  font-family: 'Montserrat';
+  }
