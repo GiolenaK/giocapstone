@@ -19,8 +19,11 @@ def badge(request):
     badgestatus4 = {'status': 'Admin'}
     badgestatus5 = {'status': 'Staff'}
     badgestatus6 = {'status': 'None'}
-    context = badgestatus6
+    context = badgestatus1
     return render(request, 'users/badge.html',{'status':context})
 
 def editprofile(request):
    return render(request, 'users/editprofile.html')
+
+def login(request):
+   return render(request, 'users/login.html')

@@ -1,0 +1,118 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block head %}
+
+<style>
+
+h2,h3{
+    font-family: 'Montserrat';
+    }
+
+body{
+    font-family: 'Comfortaa' !important;
+    font-size: large;
+    
+}
+
+#login-button{
+    background-color: #ACE791;
+    border-color: #433B2D !important;
+    border-radius:15px !important;
+    border-width: 2px !important;
+    height: 50px;
+    color:black;
+    width:10rem;
+}
+
+input{
+    background-color: #ffffff !important;
+    border-radius: 15px !important;
+    width: 70%;
+    height: 50px;
+    box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Comfortaa';
+
+}
+
+form{
+    width:30rem;
+    margin-top: 5rem;
+}
+
+#title{
+    margin-top: 5rem;
+}
+
+.fullscreen-background {
+  position: absolute; /* Ensures it stays fixed relative to the viewport */
+  right: 0;
+  top:0;
+  width: 50rem; /* Full viewport width */
+  height: 50rem; /* Full viewport height */
+  z-index: -1; /* Push it behind all other content */
+}
+
+.fullscreen-background::after {
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+
+}
+
+#background-image{
+    border-radius:  33% 67% 28% 72% / 51% 38% 62% 49%  !important;
+
+}
+
+#passwordforgot{
+    text-align: right;
+    margin-right: 1rem;
+}
+
+#bottom-part{
+    text-align: center;
+}
+
+
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+<body>
+    <h2 id="title">Welcome!</h2>
+
+    <div class="fullscreen-background align-content-center">
+        <img id="background-image"class="img-fluid mb-3" src="{% static 'users/images/dogbackground.png' %}" alt="Your profile picture" width="100%" height="auto">
+    
+    </div>
+    
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">E-mail</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
+                
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <small id="passwordforgot" class="form-text text-muted">Forgot Password?</small>    
+
+            </div>
+
+            <div id="bottom-part">
+                <button id="login-button" type="submit" class="btn btn-primary">LOG IN</button>
+                <small id="noaccount" class="form-text text-muted">Don't have an account? <u>Sign up</u></small>    
+            </div>
+        </form>
+
+
+
+</body>
+
+
+{% endblock content %}
