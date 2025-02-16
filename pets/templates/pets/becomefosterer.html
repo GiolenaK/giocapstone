@@ -1,0 +1,74 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+
+#dog-image{
+    width: 30%;
+    height: auto;
+    border-radius: 30px;
+}
+
+.content{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#info{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#steps{
+    margin-left: 5%;
+    justify-items: center;
+}
+
+p{
+    font-size: 1.2em;
+    margin-bottom: 5%;
+}
+
+button{
+    background-color: #ACE791 !important;
+    border-color: #433B2D !important;
+    border-radius:15px !important;
+    border-width: 2px !important;
+    height: 50px;
+    color:black !important;
+    margin-top:5% !important;
+}
+
+
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="content">
+        <h2>Want to Become a Foster Parent?</h2>
+        <div id="info" class="row">
+        <img
+            id="dog-image"
+            src="{% static 'pets/images/dogpetting.png' %}"
+            alt="Photo of a person petting a dog"
+            class="w3-round">
+        <div id="steps" class="col-7">
+        <p>If you are interested in joining our fostering family and aiding our effort,<br>the process is simple and easy:</p>
+            <ol>
+                <li>Fill out the registration form with your real information</li>
+                <br>
+                <li>Wait until one of our staff members contacts you back</li>
+                <br>
+                <li>If you are eligible to become a foster parent, you will receive our badge of approval!</li>
+                <br>
+                <li>Then, you will be free to request fostering rights for any of our furry friends</li>
+            </ol>
+            <button class="btn btn-primary">FILL OUT THE FORM</button>
+        </div>
+        </div>
+    </div>
+{% endblock content %}

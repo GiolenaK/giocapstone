@@ -10,5 +10,6 @@ def needs(request):
 def petstoxic(request):
     return render(request, 'pets/petstoxic.html')
 
-
+def becomefosterer(request):
+    return render(request, 'pets/becomefosterer.html')
 
