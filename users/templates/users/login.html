@@ -63,6 +63,10 @@ small{
     font-size:1rem;
 }
 
+#section{
+    margin-bottom: 20%;
+}
+
 
 </style>
 
@@ -71,31 +75,30 @@ small{
 
 {% block content %}
 
-    <h2 id="title">Welcome!</h2>
-
-    <div class="fullscreen-background align-content-center">
-        <img id="background-image"class="img-fluid mb-3" src="{% static 'users/images/dogbackground.png' %}" alt="Your profile picture" width="100%" height="auto">
-    
+    <div id="section">
+        <h2 id="title">Welcome!</h2>
+        <div class="fullscreen-background align-content-center">
+            <img id="background-image"class="img-fluid mb-3" src="{% static 'users/images/dogbackground.png' %}" alt="Your profile picture" width="100%" height="auto">
+        
+        </div>
+        
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">E-mail</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
+        
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <a href="#"  id="passwordforgot" class="form-text text-muted" >Forgot Password?</small >
+                </div>
+                <div id="bottom-part">
+                    <button id="login-button" type="submit" class="btn btn-primary">LOG IN</button>
+                    <small id="noaccount" class="form-text text-muted">Don't have an account? <u>Sign up</u></small>
+                </div>
+            </form>
     </div>
-    
-        <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">E-mail</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
-                
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                <a href="#"  id="passwordforgot" class="form-text text-muted" >Forgot Password?</small >    
-
-            </div>
-
-            <div id="bottom-part">
-                <button id="login-button" type="submit" class="btn btn-primary">LOG IN</button>
-                <small id="noaccount" class="form-text text-muted">Don't have an account? <u>Sign up</u></small>    
-            </div>
-        </form>
 
 
 

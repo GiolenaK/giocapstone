@@ -7,4 +7,8 @@ def pet(request):
 def needs(request):
     return render(request, 'pets/petneeds.html')
 
+def petstoxic(request):
+    return render(request, 'pets/petstoxic.html')
+
+
 
