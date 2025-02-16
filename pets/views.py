@@ -13,3 +13,7 @@ def petstoxic(request):
 def becomefosterer(request):
     return render(request, 'pets/becomefosterer.html')
 
+def fosterform(request):
+    return render(request, 'pets/fosteringform.html')
+
+
