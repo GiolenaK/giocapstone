@@ -65,69 +65,71 @@ label[for="proofOfIdentity"], label[for="proofOfResidence"] {
 {% endblock %}
 
 {% block content %}
-<div class="content">
-    <div id="titles">
-        <h2>Fostering Registration Form</h2>
-        <h5>Please, fill out all of the fields with an "*" next to them.</h5>
-    </div>
-    <form>
-        <div class="row">
-            <div id="left-side" class="col-5">
-                <div class="form-group">
-                    <div class="form-group">
-                        <label for="firstName">First Name*</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name*</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="dob">Date of Birth*</label>
-                    <input type="date" class="form-control" id="dob">
-                </div>
-                <div class="form-group">
-                    <label for="address">Address*</label>
-                    <input type="text" class="form-control" id="address" placeholder="Enter Address">
-                </div>
-                <div class="form-group">
-                    <label for="phoneNumber">Phone Number*</label>
-                    <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email of Communication*</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter Email">
-                </div>
-    
-    
-            </div>
-    
-            <div  class="col-1">
-                <div class="vl"></div>
-            </div>
-            <div id="right-side" class="col">
-                <div class="form-group">
-                    <label for="proofOfIdentity">Proof of Identity*</label>
-                    <div><small>Your ID</small></div>
-                    <input id="identity-button" type="file" class="form-control" id="proofOfIdentity">
-                </div>
-                <div class="form-group">
-                    <label for="proofOfResidence">Proof of Residence*</label>
-                    <div><small>Any document that shows your current address (e.g. electrical/water/gas bill)</small></div>
-                    <input id="residence-button" type="file" class="form-control" id="proofOfResidence">
-                </div>
-                <div class="form-group">
-                    <label for="experience">Prior Experience with Animals</label>
-                    <textarea class="form-control" id="experience" rows="4" placeholder="Describe your prior experience with animals"></textarea>
-                </div>
-    
-                <div id="bottom-part">
-                    <button id="submit-button" type="submit" class="btn btn-primary">SUBMIT FORM</button>
-                </div>
-            </div>
-            </form>
+<div class="container col-lg-9">
+    <div class="content">
+        <div id="titles">
+            <h2>Fostering Registration Form</h2>
+            <h5>Please, fill out all of the fields with an "*" next to them.</h5>
         </div>
+        <form>
+            <div class="row">
+                <div id="left-side" class="col-5">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="firstName">First Name*</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name*</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth*</label>
+                        <input type="date" class="form-control" id="dob">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address*</label>
+                        <input type="text" class="form-control" id="address" placeholder="Enter Address">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number*</label>
+                        <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email of Communication*</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter Email">
+                    </div>
+    
+    
+                </div>
+    
+                <div  class="col-1">
+                    <div class="vl"></div>
+                </div>
+                <div id="right-side" class="col">
+                    <div class="form-group">
+                        <label for="proofOfIdentity">Proof of Identity*</label>
+                        <div><small>Your ID</small></div>
+                        <input id="identity-button" type="file" class="form-control" id="proofOfIdentity">
+                    </div>
+                    <div class="form-group">
+                        <label for="proofOfResidence">Proof of Residence*</label>
+                        <div><small>Any document that shows your current address (e.g. electrical/water/gas bill)</small></div>
+                        <input id="residence-button" type="file" class="form-control" id="proofOfResidence">
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Prior Experience with Animals</label>
+                        <textarea class="form-control" id="experience" rows="4" placeholder="Describe your prior experience with animals"></textarea>
+                    </div>
+    
+                    <div id="bottom-part">
+                        <button id="submit-button" type="submit" class="btn btn-primary">SUBMIT FORM</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+    </div>
 </div>
 
 {% endblock %}

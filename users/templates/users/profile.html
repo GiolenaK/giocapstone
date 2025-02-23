@@ -4,13 +4,16 @@
 {% block head %}
 
 <style>
-    button{
+    #choice{
         background-color: #FFFED7;
         border-radius: 15px !important;
         width: 70%;
         height: 50px;
         box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.2);
         font-family: 'Comfortaa';
+        color:black;    
+        align-content: center;
+        border:0;
     }
 
     #mybuttons{
@@ -36,79 +39,84 @@
 
 {% block content %}
 
-<body>
-    <h1>My Profile</h1>
+<div class="container col-lg-10"> 
 
-    <!-- TESTING IF STATEMENTS
-    {% if user %}
-    <p>Welcome, {{ user }}!</p>
+    <body>
+        <h1>My Profile</h1>
+    
+        <!-- TESTING IF STATEMENTS
+        {% if user %}
+        <p>Welcome, {{ user }}!</p>
+        {% else %}
+            <h2>oops</h2>
+        {% endif %}
+        -->
+    {% if user.status == "Fosterer" %}
+    <div id ="section" class="row justify-content-center align-items-center">
+        <div class="col-md-5 text-center">
+            <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
+            <h3>Giolena</h3>
+            <h2><b>Fosterer</b></h2>
+        </div>
+        <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
+            <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
+            <a id="choice" href="#" class="btn btn-primary rounded-pill">View Fostering History</a>
+            <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+        </div>
+        </div>
+    </div>
+    
+    
+    {% elif user.status == "Admin" %}
+    <div id ="section" class="row justify-content-center align-items-center">
+        <div class="col-md-5 text-center">
+            <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
+            <h3>Giolena</h3>
+            <h2><b>Admin</b></h2>
+    </div>
+    <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
+        <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
+        <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+    </div>
+    
+    
+    </div>
+</div>
+    {% elif user.status == "Staff" %}
+    <div id ="section" class="row justify-content-center align-items-center">
+        <div class="col-md-5 text-center">
+            <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
+            <h3>Giolena</h3>
+            <h2><b>Staff</b></h2>
+    </div>
+        <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
+            <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
+            <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+        </div>
+    </div>
+    </div>
+
     {% else %}
-        <h2>oops</h2>   
-    {% endif %}
-    -->
-{% if user.status == "Fosterer" %}
-<div id ="section" class="row justify-content-center align-items-center">
-    <div class="col-md-5 text-center">
-        <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-        <h3>Giolena</h3>
-        <h2><b>Fosterer</b></h2>
-</div>
-    <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
-        <button type="button" class="btn rounded-pill">Edit Profile Information</button>
-        <button type="button" class="btn rounded-pill">View Fostering History</button>
-        <button type="button" class="btn rounded-pill">View Badge</button>
+    <div id ="section" class="row justify-content-center align-items-center">
+        <div class="col-md-5 text-center">
+            <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
+            <h3>Giolena</h3>
+            <h2><b>User</b></h2>
     </div>
 
-</div>
 
-
-{% elif user.status == "Admin" %}
-<div id ="section" class="row justify-content-center align-items-center">
-    <div class="col-md-5 text-center">
-        <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-        <h3>Giolena</h3>
-        <h2><b>Admin</b></h2>
-</div>
-    <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
-        <button type="button" class="btn rounded-pill">Edit Profile Information</button>
-        <button type="button" class="btn rounded-pill">View Badge</button>
+        <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
+            <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
+            <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+        </div>
+    </div>
     </div>
 
-</div>
-
-{% elif user.status == "Staff" %}
-<div id ="section" class="row justify-content-center align-items-center">
-    <div class="col-md-5 text-center">
-        <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-        <h3>Giolena</h3>
-        <h2><b>Staff</b></h2>
-</div>
-    <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
-        <button type="button" class="btn rounded-pill">Edit Profile Information</button>
-        <button type="button" class="btn rounded-pill">View Badge</button>
-    </div>
-
-</div>
-
-{% else %}
-<div id ="section" class="row justify-content-center align-items-center">
-    <div class="col-md-5 text-center">
-        <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-        <h3>Giolena</h3>
-        <h2><b>User</b></h2>
-</div>
-    <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
-        <button type="button" class="btn rounded-pill">Edit Profile Information</button>
-        <button type="button" class="btn rounded-pill">View Badge</button>
-    </div>
-
-</div>
 {% endif %}
 <!-- <img src="{% static 'users/images/vaelan.png' %}" alt="My Image">  WORKING--> 
     
 <!--<img src="{% static 'static/images/dog.jpg' %}"> not working --> 
 
 
-</body>
 
 {% endblock content %}

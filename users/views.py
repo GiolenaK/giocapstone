@@ -9,7 +9,7 @@ def profile(request):
     usertype1 = {'status': 'Fosterer'}
     usertype2 = {'status': 'Admin'}
     usertype3 = {'status': 'Staff'}
-    context = usertype2
+    context = usertype1
     return render(request, 'users/profile.html',{'user':context})
 
 def badge(request):
@@ -19,7 +19,7 @@ def badge(request):
     badgestatus4 = {'status': 'Admin'}
     badgestatus5 = {'status': 'Staff'}
     badgestatus6 = {'status': 'None'}
-    context = badgestatus2
+    context = badgestatus1
     return render(request, 'users/badge.html',{'status':context})
 
 def editprofile(request):

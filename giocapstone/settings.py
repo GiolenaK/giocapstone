@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'pets',
+    'recommendations',
+    'import_export',
     'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser'  
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,7 +84,7 @@ WSGI_APPLICATION = 'giocapstone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'identifier.sqlite',
     }
 }
 

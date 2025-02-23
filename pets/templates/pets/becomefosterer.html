@@ -48,27 +48,29 @@ button{
 
 {% block content %}
 
-    <div class="content">
-        <h2>Want to Become a Foster Parent?</h2>
-        <div id="info" class="row">
-        <img
-            id="dog-image"
-            src="{% static 'pets/images/dogpetting.png' %}"
-            alt="Photo of a person petting a dog"
-            class="w3-round">
-        <div id="steps" class="col-7">
-        <p>If you are interested in joining our fostering family and aiding our effort,<br>the process is simple and easy:</p>
-            <ol>
-                <li>Fill out the registration form with your real information</li>
-                <br>
-                <li>Wait until one of our staff members contacts you back</li>
-                <br>
-                <li>If you are eligible to become a foster parent, you will receive our badge of approval!</li>
-                <br>
-                <li>Then, you will be free to request fostering rights for any of our furry friends</li>
-            </ol>
-            <button class="btn btn-primary">FILL OUT THE FORM</button>
-        </div>
+<div class="container col-lg-9">
+        <div class="content">
+            <h2>Want to Become a Foster Parent?</h2>
+            <div id="info" class="row">
+            <img
+                id="dog-image"
+                src="{% static 'pets/images/dogpetting.png' %}"
+                alt="Photo of a person petting a dog"
+                class="w3-round">
+            <div id="steps" class="col-7">
+            <p>If you are interested in joining our fostering family and aiding our effort,<br>the process is simple and easy:</p>
+                <ol>
+                    <li>Fill out the registration form with your real information</li>
+                    <br>
+                    <li>Wait until one of our staff members contacts you back</li>
+                    <br>
+                    <li>If you are eligible to become a foster parent, you will receive our badge of approval!</li>
+                    <br>
+                    <li>Then, you will be free to request fostering rights for any of our furry friends</li>
+                </ol>
+                <button class="btn btn-primary">FILL OUT THE FORM</button>
+            </div>
+            </div>
         </div>
     </div>
 {% endblock content %}

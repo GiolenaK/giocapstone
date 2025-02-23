@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import PetProfile
 
 def pet(request):
     return render(request, 'pets/about.html')
@@ -17,3 +18,6 @@ def fosterform(request):
     return render(request, 'pets/fosteringform.html')
 
 
+def pet_list(request):
+    pets = PetProfile.objects.all()  # Get all pets
+    return render(request, 'pets/pets.html', {'pets': pets}) #send them to the pets.html

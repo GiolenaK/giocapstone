@@ -40,15 +40,15 @@
         <div class="d-flex align-items-center">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pets</a>
+                    <a class="nav-link" href="{% url 'pet-list' %}">Pets</a>
                 </li>
                 <div class="navbar-divider"></div>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pet Needs</a>
+                    <a class="nav-link" href="{% url 'pet-needs' %}">Pet Needs</a>
                 </li>
                 <div class="navbar-divider"></div>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="{% url 'about' %}">About Us</a>
                 </li>
                 <div class="navbar-divider"></div>
                 <li class="nav-item">
@@ -56,14 +56,14 @@
                 </li>
                 <div class="navbar-divider"></div>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Become a Foster Parent</a>
+                    <a class="nav-link" href="{% url 'become-fosterer' %}">Become a Foster Parent</a>
                 </li>
             </ul>
         </div>
 
         <!-- Profile Icon -->
         <div class="navbar-profile">
-            <a href="#">
+            <a href="{% url 'user-profile' %}">
                 <img src="{% static 'users/images/userprofile.png' %}" alt="Profile" width="100px" height="auto">
             </a>
         </div>
@@ -73,7 +73,7 @@
  
 <body>
 
-  <div class="container col-md-6 col-lg-9">
+  <div class="container col">
 
     {% block content %}{% endblock %}
     <!-- <h1>HELLOO TEST</h1>

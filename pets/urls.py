@@ -7,5 +7,6 @@ urlpatterns = [
     path('toxic/', views.petstoxic, name='pet-toxic'),
     path('fosterer/', views.becomefosterer, name='become-fosterer'),
     path('fosterform/', views.fosterform, name='foster-form'),
+    path('list/', views.pet_list, name='pet-list'),
     
 ]
