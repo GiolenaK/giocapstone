@@ -1,0 +1,111 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+   
+   .faq-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.faq-column {
+    width: 50%; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 100px;
+    margin-top: 50px;
+}
+
+.faq-item {
+    background-color: #d9e8d4;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.toggle-btn {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.faq-answer {
+    display: none;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .toggle-btn {
+    transform: rotate(45deg);
+   
+}
+
+.vl {
+        border-left: 2px solid rgb(3, 3, 3);
+        height: auto;
+        align-self: stretch;
+        margin-left: 20px;
+        margin-right: 20px;
+        min-height: 400px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container col-lg-9">
+
+    <h2>FAQ</h2>
+    
+    <div class="faq-container">
+        <div class="faq-column">
+            <div class="faq-item"><div class="faq-question">Question <span class="toggle-btn">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate blandit quam, sed scelerisque sem scelerisque id. Sed eget libero ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean euismod sagittis mauris, sit amet eleifend purus volutpat a. Aliquam rhoncus vulputate arcu, vitae interdum odio semper vel. Duis fermentum mollis diam sed rhoncus. Morbi vel suscipit dolor, non ornare ligula. Aliquam et erat sed libero semper tincidunt. Fusce laoreet turpis ac dolor lacinia condimentum. Aenean lobortis placerat lorem nec maximus. Praesent porta tortor nibh, et posuere velit viverra et. Nam eu purus varius, congue lacus nec, congue risus. Nam vel quam sed massa malesuada tincidunt vitae ut sem. Donec ac pulvinar justo. Praesent ut erat nec mi placerat tristique at non metus.</div></div>
+            <div class="faq-item"><div class="faq-question">Question <span class="toggle-btn">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate blandit quam, sed scelerisque sem scelerisque id. Sed eget libero ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean euismod sagittis mauris, sit amet eleifend purus volutpat a. Aliquam rhoncus vulputate arcu, vitae interdum odio semper vel. Duis fermentum mollis diam sed rhoncus. Morbi vel suscipit dolor, non ornare ligula. Aliquam et erat sed libero semper tincidunt. Fusce laoreet turpis ac dolor lacinia condimentum. Aenean lobortis placerat lorem nec maximus. Praesent porta tortor nibh, et posuere velit viverra et. Nam eu purus varius, congue lacus nec, congue risus. Nam vel quam sed massa malesuada tincidunt vitae ut sem. Donec ac pulvinar justo. Praesent ut erat nec mi placerat tristique at non metus.</div></div>
+            <div class="faq-item"><div class="faq-question">Question <span class="toggle-btn">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate blandit quam, sed scelerisque sem scelerisque id. Sed eget libero ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean euismod sagittis mauris, sit amet eleifend purus volutpat a. Aliquam rhoncus vulputate arcu, vitae interdum odio semper vel. Duis fermentum mollis diam sed rhoncus. Morbi vel suscipit dolor, non ornare ligula. Aliquam et erat sed libero semper tincidunt. Fusce laoreet turpis ac dolor lacinia condimentum. Aenean lobortis placerat lorem nec maximus. Praesent porta tortor nibh, et posuere velit viverra et. Nam eu purus varius, congue lacus nec, congue risus. Nam vel quam sed massa malesuada tincidunt vitae ut sem. Donec ac pulvinar justo. Praesent ut erat nec mi placerat tristique at non metus.</div></div>
+            <div class="faq-item"><div class="faq-question">Question <span class="toggle-btn">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate blandit quam, sed scelerisque sem scelerisque id. Sed eget libero ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean euismod sagittis mauris, sit amet eleifend purus volutpat a. Aliquam rhoncus vulputate arcu, vitae interdum odio semper vel. Duis fermentum mollis diam sed rhoncus. Morbi vel suscipit dolor, non ornare ligula. Aliquam et erat sed libero semper tincidunt. Fusce laoreet turpis ac dolor lacinia condimentum. Aenean lobortis placerat lorem nec maximus. Praesent porta tortor nibh, et posuere velit viverra et. Nam eu purus varius, congue lacus nec, congue risus. Nam vel quam sed massa malesuada tincidunt vitae ut sem. Donec ac pulvinar justo. Praesent ut erat nec mi placerat tristique at non metus.</div></div>
+            <div class="faq-item"><div class="faq-question">Question <span class="toggle-btn">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate blandit quam, sed scelerisque sem scelerisque id. Sed eget libero ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean euismod sagittis mauris, sit amet eleifend purus volutpat a. Aliquam rhoncus vulputate arcu, vitae interdum odio semper vel. Duis fermentum mollis diam sed rhoncus. Morbi vel suscipit dolor, non ornare ligula. Aliquam et erat sed libero semper tincidunt. Fusce laoreet turpis ac dolor lacinia condimentum. Aenean lobortis placerat lorem nec maximus. Praesent porta tortor nibh, et posuere velit viverra et. Nam eu purus varius, congue lacus nec, congue risus. Nam vel quam sed massa malesuada tincidunt vitae ut sem. Donec ac pulvinar justo. Praesent ut erat nec mi placerat tristique at non metus.</div></div>
+        </div>
+        <div class="vl"></div>
+        <div class="faq-column">
+            <div class="faq-item"><div class="faq-question">Question <span class="toggle-btn">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate blandit quam, sed scelerisque sem scelerisque id. Sed eget libero ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean euismod sagittis mauris, sit amet eleifend purus volutpat a. Aliquam rhoncus vulputate arcu, vitae interdum odio semper vel. Duis fermentum mollis diam sed rhoncus. Morbi vel suscipit dolor, non ornare ligula. Aliquam et erat sed libero semper tincidunt. Fusce laoreet turpis ac dolor lacinia condimentum. Aenean lobortis placerat lorem nec maximus. Praesent porta tortor nibh, et posuere velit viverra et. Nam eu purus varius, congue lacus nec, congue risus. Nam vel quam sed massa malesuada tincidunt vitae ut sem. Donec ac pulvinar justo. Praesent ut erat nec mi placerat tristique at non metus.</div></div>
+            <div class="faq-item"><div class="faq-question">Question <span class="toggle-btn">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate blandit quam, sed scelerisque sem scelerisque id. Sed eget libero ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean euismod sagittis mauris, sit amet eleifend purus volutpat a. Aliquam rhoncus vulputate arcu, vitae interdum odio semper vel. Duis fermentum mollis diam sed rhoncus. Morbi vel suscipit dolor, non ornare ligula. Aliquam et erat sed libero semper tincidunt. Fusce laoreet turpis ac dolor lacinia condimentum. Aenean lobortis placerat lorem nec maximus. Praesent porta tortor nibh, et posuere velit viverra et. Nam eu purus varius, congue lacus nec, congue risus. Nam vel quam sed massa malesuada tincidunt vitae ut sem. Donec ac pulvinar justo. Praesent ut erat nec mi placerat tristique at non metus.</div></div>
+            <div class="faq-item"><div class="faq-question">Question <span class="toggle-btn">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate blandit quam, sed scelerisque sem scelerisque id. Sed eget libero ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean euismod sagittis mauris, sit amet eleifend purus volutpat a. Aliquam rhoncus vulputate arcu, vitae interdum odio semper vel. Duis fermentum mollis diam sed rhoncus. Morbi vel suscipit dolor, non ornare ligula. Aliquam et erat sed libero semper tincidunt. Fusce laoreet turpis ac dolor lacinia condimentum. Aenean lobortis placerat lorem nec maximus. Praesent porta tortor nibh, et posuere velit viverra et. Nam eu purus varius, congue lacus nec, congue risus. Nam vel quam sed massa malesuada tincidunt vitae ut sem. Donec ac pulvinar justo. Praesent ut erat nec mi placerat tristique at non metus.</div></div>
+            <div class="faq-item"><div class="faq-question">Question <span class="toggle-btn">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate blandit quam, sed scelerisque sem scelerisque id. Sed eget libero ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean euismod sagittis mauris, sit amet eleifend purus volutpat a. Aliquam rhoncus vulputate arcu, vitae interdum odio semper vel. Duis fermentum mollis diam sed rhoncus. Morbi vel suscipit dolor, non ornare ligula. Aliquam et erat sed libero semper tincidunt. Fusce laoreet turpis ac dolor lacinia condimentum. Aenean lobortis placerat lorem nec maximus. Praesent porta tortor nibh, et posuere velit viverra et. Nam eu purus varius, congue lacus nec, congue risus. Nam vel quam sed massa malesuada tincidunt vitae ut sem. Donec ac pulvinar justo. Praesent ut erat nec mi placerat tristique at non metus.</div></div>
+            <div class="faq-item"><div class="faq-question">Question <span class="toggle-btn">+</span></div><div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate blandit quam, sed scelerisque sem scelerisque id. Sed eget libero ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean euismod sagittis mauris, sit amet eleifend purus volutpat a. Aliquam rhoncus vulputate arcu, vitae interdum odio semper vel. Duis fermentum mollis diam sed rhoncus. Morbi vel suscipit dolor, non ornare ligula. Aliquam et erat sed libero semper tincidunt. Fusce laoreet turpis ac dolor lacinia condimentum. Aenean lobortis placerat lorem nec maximus. Praesent porta tortor nibh, et posuere velit viverra et. Nam eu purus varius, congue lacus nec, congue risus. Nam vel quam sed massa malesuada tincidunt vitae ut sem. Donec ac pulvinar justo. Praesent ut erat nec mi placerat tristique at non metus.</div></div>
+        </div>
+    </div>
+</div>    
+    
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+        item.addEventListener("click", () => {
+            item.classList.toggle("active");
+        });
+    });
+});
+
+</script>
+{% endblock content %}

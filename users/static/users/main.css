@@ -42,7 +42,7 @@
   position: relative;
   height:50%;
   margin:0;
-  bottom: 0%; /* AMEN */
+  bottom: 0% !important; /* AMEN */
   overflow: hidden;
   box-sizing: border-box;
   align-items: flex-start;

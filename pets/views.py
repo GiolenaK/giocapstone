@@ -18,6 +18,12 @@ def fosterform(request):
     return render(request, 'pets/fosteringform.html')
 
 
+def home(request):
+    return render(request, 'pets/home.html')
+
+def faq(request):
+    return render(request, 'pets/faq.html')
+
 def pet_list(request):
     pets = PetProfile.objects.all()  # Get all pets
     return render(request, 'pets/pets.html', {'pets': pets}) #send them to the pets.html

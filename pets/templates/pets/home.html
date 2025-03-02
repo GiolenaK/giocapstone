@@ -1,0 +1,335 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+    .btn {
+        background-color: #ACE791;
+        border-color: #433B2D !important;
+        border-radius:15px !important;
+        border-width: 2px !important;
+        height: 4rem;
+        color:black;
+        width:12rem;
+        margin-top: 1rem;
+    }
+
+    .btn:hover {
+        background-color: #60c531;
+    }
+
+    
+    button:hover {
+            background-color: #8ce99a;
+        }
+
+
+    .prev, .next {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    .prev:hover, .next:hover{
+        background-color: #0685b8;
+        height: 100px;
+
+    }
+    .carousel-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; 
+        background-color: #cce7e8;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 100%; 
+        height: 500px;
+        margin: 0 auto;
+        margin-top: 40rem;
+        z-index: 1;
+}
+
+    .carousel-slide {
+        display: flex;
+        align-items: center; 
+        justify-content: space-between; 
+        width: 80%;
+        text-align: left;
+}
+
+
+    .carousel-slide img {
+    max-width: 100%; 
+    height: auto;
+    max-height: 350px; 
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
+    .carousel-left {
+        display: flex;
+        flex-direction: column; 
+        align-items: left; 
+        width: 50%; 
+        
+}
+
+
+    .pet-info {
+        max-width: 300px;
+}
+
+    #banners{
+    width: 500px; 
+    height: 700px; 
+    border-radius: 15px;
+    position: relative;
+
+}
+
+.banner-wrapper {
+    display: flex;
+    justify-content: flex-end; 
+    position: absolute;
+    top: 0; 
+    right: 0; 
+    width: auto; 
+    margin-top: 0; 
+    margin-top: -30px;
+    z-index: -1;
+}
+
+#banners {
+    max-width: 90%; 
+    height: auto;
+}
+
+.fostering-section {
+    justify-items: center;
+    margin-top:50px;
+}
+
+#mountain-image{
+    width: 100%; 
+    height: 800px; 
+    position: relative;
+    margin-top: -10rem;
+}
+
+
+.pets-section {
+    align-items: center;
+    background-color: #B4D6A7;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 100%; 
+    height: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    z-index: 1;
+    flex-direction: column;
+    display: flex;
+}
+
+
+.pets-container {
+    display: flex;
+    gap: 5rem;
+}
+
+.pet-card {
+    justify-content: center; 
+    align-items: center; 
+    height:250px;
+    width:300px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    overflow:hidden;
+}
+
+.pet-card img {
+    width: 100%;
+    border-radius: 10px;
+    border: #433B2D !important;
+    border-width: 2px !important;
+}
+
+.pet-card p {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.team-section {
+    align-items: center;
+    height: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    z-index: 1;
+    flex-direction: column;
+    display: flex;
+}
+.team-section img{
+    width: 60%; 
+    height: 60%; 
+    border-radius: 15px;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    filter: brightness(100%) contrast(80%); 
+}
+
+h1, h3, .fostering-section h2, .fostering-section , .team-section h2 {
+    color: white;
+    font-weight: 300;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container col-lg-9">
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="{% static 'pets/images/homevideo.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+
+        <h1>FurryFriends</h1>
+        <h3>Looking to offer a temporary home to a little pet?</h3>
+        <div class="banner-wrapper">
+            <img id="banners" src="{% static 'pets/images/Banners.png' %}" alt="Banners"></div>
+
+
+        <div class="carousel-container">
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            
+            <div class="carousel-slide ">
+                <div class="carousel-left">
+                    <h2 id="pet-name">Meet Doodles!</h2>
+                    <img id="pet-image" src="{% static 'pets/images/doodles.jpg' %}" alt="Pet Image">
+                </div>
+                <div class="pet-info">
+                    
+                    <p id="pet-description">Doodles came to us 5 months ago as a result of the Summer forest fires.
+                        He is cuddly, cute, and loves to play!</p>
+                    <button class="btn btn-primary">LEARN MORE</button>
+                </div>
+            </div>
+
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
+
+
+        <div class="fostering-section">
+            <div class="text-container"></div>
+                <h2>By fostering, you aid us</h2>
+                <p>Lorem ipsum Lorem ipsum Lorem Ipsum Lorem Ipsum<br>
+                    Lorem ipsum Lorem ipsum Lorem Ipsum Lorem Ipsum!<br>
+                    Lorem ipsum Lorem ipsum Lorem Ipsum Lorem Ipsum!</p>
+                    <button type="button" class="btn btn-primary">ABOUT US</button>
+            
+        
+
+
+        <div class="pets-section">
+            <div id="title">
+                <h2>Our lil buddies~</h2>
+            </div>
+            <div class="pets-container">
+                <div class="pet-card">
+                    <img src="{% static 'pets/images/doodles.jpg' %}" alt="Maxie">
+                    <p>Maxie</p>
+                </div>
+                <div class="pet-card">
+                    <img src="{% static 'pets/images/doodles.jpg' %}" alt="Sydney">
+                    <p>Sydney</p>
+                </div>
+                <div class="pet-card">
+                    <img src="{% static 'pets/images/doodles.jpg' %}" alt="Looky">
+                    <p>Looky</p>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+
+
+
+        <div class="team-section">
+            <h2>Our Team</h2>
+            <img src="{% static 'pets/images/ourteam.jpg' %}" alt="Team Placeholder">
+            <button type="button" class="btn btn-primary">CONTACT US</button>
+        </div>
+
+
+
+        </div>
+    </div>
+    <script>
+        const pets = [
+            {
+                name: "Meet Doodles!",
+                description: "Doodles came to us 5 months ago as a result of the Summer forest fires. He is cuddly, cute, and loves to play!",
+                image: "{% static 'pets/images/doodles.jpg' %}"
+            },
+            {
+                name: "Meet Bella!",
+                description: "Bella is a playful and affectionate dog rescued from the streets. She loves belly rubs!",
+                image: "{% static 'pets/images/bella.jpg' %}"
+            },
+            {
+                name: "Meet Max!",
+                description: "Max is a brave dog who survived a tough storm. He enjoys running and playing fetch.",
+                image: "{% static 'pets/images/max.jpg' %}"
+            }
+        ];
+
+        let currentIndex = 0;
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+
+            if (currentIndex < 0) {
+                currentIndex = pets.length - 1;
+            } else if (currentIndex >= pets.length) {
+                currentIndex = 0;
+            }
+
+            document.getElementById("pet-name").innerText = pets[currentIndex].name;
+            document.getElementById("pet-description").innerText = pets[currentIndex].description;
+            document.getElementById("pet-image").src = pets[currentIndex].image;
+        }
+    </script>
+
+{% endblock content %}
