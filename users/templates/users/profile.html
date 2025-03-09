@@ -55,13 +55,14 @@
     <div id ="section" class="row justify-content-center align-items-center">
         <div class="col-md-5 text-center">
             <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-            <h3>Giolena</h3>
-            <h2><b>Fosterer</b></h2>
+            <h3>{{ user.username }}</h3>
+            <h2><b>{{ user.user_type }}</b></h2>
         </div>
         <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
             <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
             <a id="choice" href="#" class="btn btn-primary rounded-pill">View Fostering History</a>
             <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+            <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
         </div>
         </div>
     </div>
@@ -71,12 +72,14 @@
     <div id ="section" class="row justify-content-center align-items-center">
         <div class="col-md-5 text-center">
             <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-            <h3>Giolena</h3>
-            <h2><b>Admin</b></h2>
+            <h3>{{ user.username }}</h3>
+            <h2><b>{{ user.user_type }}</b></h2>
     </div>
     <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
         <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
         <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+        <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
+
     </div>
     
     
@@ -86,12 +89,14 @@
     <div id ="section" class="row justify-content-center align-items-center">
         <div class="col-md-5 text-center">
             <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-            <h3>Giolena</h3>
-            <h2><b>Staff</b></h2>
+            <h3>{{ user.username }}</h3>
+            <h2><b>{{ user.user_type }}</b></h2>
     </div>
         <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
             <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
             <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+            <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
+
         </div>
     </div>
     </div>
@@ -100,14 +105,16 @@
     <div id ="section" class="row justify-content-center align-items-center">
         <div class="col-md-5 text-center">
             <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-            <h3>Giolena</h3>
-            <h2><b>User</b></h2>
+            <h3>{{ user.username }}</h3>
+            <h2><b>{{ user.user_type }}</b></h2>
     </div>
 
 
         <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
             <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
             <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+            <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
+
         </div>
     </div>
     </div>

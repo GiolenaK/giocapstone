@@ -29,7 +29,7 @@
 <div class="container col-lg-10"> 
 
         <h1>My Badge</h1>
-        {% if status.status == "Accepted" %}
+        {% if status == "Accepted" %}
         <div id ="section" class="row justify-content-center align-items-center">
             <div class="col-md-5 text-center">
                 <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-        {% elif status.status == "Admin" %}
+        {% elif status == "Admin" %}
         <div id ="section" class="row justify-content-center align-items-center">
             <div class="col-md-5 text-center">
                 <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
@@ -61,7 +61,7 @@
         </div>
         </div>
         
-        {% elif status.status == "Staff" %}
+        {% elif status == "Staff" %}
         <div id ="section" class="row justify-content-center align-items-center">
             <div class="col-md-5 text-center">
                 <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-        {% elif status.status == "Pending" %}
+        {% elif status == "Pending" %}
         <div id ="section" class="row justify-content-center align-items-center">
             <div class="col-md-5 text-center">
                 <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
@@ -90,7 +90,7 @@
         </div>
     </div>
         
-        {% elif status.status == "Rejected" %}
+        {% elif status == "Rejected" %}
         <div id ="section" class="row justify-content-center align-items-center">
             <div class="col-md-5 text-center">
                 <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">

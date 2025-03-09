@@ -11,7 +11,7 @@ h2,h3{
 
 
 
-#login-button{
+#signup-button{
     background-color: #ACE791;
     border-color: #433B2D !important;
     border-radius:15px !important;
@@ -19,7 +19,8 @@ h2,h3{
     height: 50px;
     color:black;
     width:10rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 input{
@@ -71,6 +72,7 @@ form{
 
 #bottom-part{
     text-align: center;
+    justify-content: center !important;
 }
 
 small{
@@ -89,39 +91,68 @@ small{
 {% block content %}
 
 
-    <div class="container col-lg-10">
-        <div id="section">
-            <h2 id="title">Welcome!</h2>
-            <div class="fullscreen-background align-content-center">
-                <img id="background-image"class="img-fluid mb-3" src="{% static 'users/images/dogbackground.png' %}" alt="Your profile picture" width="100%" height="auto">
-        
-            </div>
-        
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputUsername">Username</label>
-                        <input type="username" class="form-control" id="exampleUsername" aria-describedby="username" placeholder="Enter Username">
-        
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">E-mail</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
-        
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword2">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Retype Password">
-                    </div>
-                    <div id="bottom-part">
-                        <button id="login-button" type="submit" class="btn btn-primary">SIGN UP</button>
-                    </div>
-                </form>
+<div class="container col-lg-10">
+    <div id="section">
+        <h2 id="title">Welcome!</h2>
+
+        <div class="fullscreen-background align-content-center">
+            <img id="background-image" class="img-fluid mb-3" 
+                 src="{% static 'users/images/dogbackground.png' %}" 
+                 alt="Your profile picture" width="100%" height="auto">
         </div>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %} <!-- IMPORTANT -->
+
+            
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" 
+                       id="exampleUsername" placeholder="Enter Username"
+                       value="{{ form.username.value|default_if_none:'' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" class="form-control"
+                       id="exampleInputEmail" placeholder="Enter E-mail"
+                       value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="password1">Password</label>
+                <input type="password" name="password1" class="form-control"
+                       id="exampleInputPassword1" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                <input type="password" name="password2" class="form-control"
+                       id="exampleInputPassword2" placeholder="Retype Password">
+            </div>
+
+            <div id="bottom-part">
+                <button id="signup-button" type="submit" class="btn btn-primary">SIGN UP</button>
+            
+                <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+        </form>
+
+        
     </div>
+</div>
 
 
 
