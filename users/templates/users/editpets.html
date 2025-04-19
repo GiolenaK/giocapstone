@@ -1,0 +1,88 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+
+.pet-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 30px; 
+}
+
+</style>
+
+{% endblock %}
+{% block content %}
+<div class="container col-lg-11"> 
+<h2> pet addition</h2>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Species</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Age</th>
+        <th scope="col">Size</th>
+        <th scope="col">Breed</th>
+        <th scope="col">Fur</th>
+        <th scope="col">Arrival</th>
+        <th scope="col">Character</th>
+        <th scope="col">Allergies</th>
+        <th scope="col">Disabilities</th>
+        <th scope="col">Image</th>
+        <th scope="col"> </th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for pet in pets %}
+        <tr>
+          
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ pet.name }}</td>
+          <td>{{ pet.species }}</td>
+          <td>{{ pet.gender|slice:":1"|upper }}</td>
+          <td>{{ pet.age }}</td>
+          <td>{{ pet.size }}</td>
+          <td>{{ pet.breed }}</td>
+          <td>{{ pet.fur }}</td>
+          <td>{{ pet.shelter_arrival|date:"d/m/y" }}</td>
+          <td>
+            {% for tag in pet.character_traits.all %}
+              {{ tag.name }}<br>
+            {% empty %}
+              None
+            {% endfor %}
+          </td>
+          
+          <td>
+            {% for tag in pet.allergies.all %}
+              {{ tag.name }}<br>
+            {% empty %}
+              None
+            {% endfor %}
+          </td>
+          <td>
+            {% for tag in pet.disabilities.all %}
+              {{ tag.name }}<br>
+            {% empty %}
+              None
+            {% endfor %}
+          </td>       
+          <td>
+            <img src="{{ pet.image.url }}" class="pet-thumb" alt="pet">
+          </td>
+          <td>
+            <a href="{% url 'edit-pet' pet.pk %}" class="btn btn-lg">✏️</a>
+          </td>
+
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}

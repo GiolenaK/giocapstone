@@ -252,12 +252,14 @@ h1, h3, .fostering-section h2, .fostering-section , .team-section h2 {
 
 
         <div class="fostering-section">
-            <div class="text-container"></div>
+            <div class="text-container" style="text-align: center;">
                 <h2>By fostering, you aid us</h2>
-                <p>Lorem ipsum Lorem ipsum Lorem Ipsum Lorem Ipsum<br>
-                    Lorem ipsum Lorem ipsum Lorem Ipsum Lorem Ipsum!<br>
-                    Lorem ipsum Lorem ipsum Lorem Ipsum Lorem Ipsum!</p>
-                    <button type="button" class="btn btn-primary">ABOUT US</button>
+                <p>When you decide to house a pet for a temporary time,<br>
+                    it allows us to bring in more pets to the shelter,<br>
+                    therefore, more pets can have the care they deserve</p>
+                    <a href="{% url 'about' %}">
+                <button type="button" class="btn btn-primary">ABOUT US</button></a>
+            </div>
             
         
 
@@ -289,7 +291,8 @@ h1, h3, .fostering-section h2, .fostering-section , .team-section h2 {
         <div class="team-section">
             <h2>Our Team</h2>
             <img src="{% static 'pets/images/ourteam.jpg' %}" alt="Team Placeholder">
-            <button type="button" class="btn btn-primary">CONTACT US</button>
+            <a href="{% url 'contact' %}">
+                <button type="button" class="btn btn-primary">CONTACT US</button></a>
         </div>
 
 

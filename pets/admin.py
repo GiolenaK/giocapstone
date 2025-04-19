@@ -1,7 +1,11 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources
-from .models import PetProfile
+from .models import PetProfile, FavoritedPet,CharacterTrait,Allergy,Disability
+
+admin.site.register(CharacterTrait)
+admin.site.register(Allergy)
+admin.site.register(Disability)
 
 # adding import and export
 class PetProfileResource(resources.ModelResource):
@@ -24,9 +28,19 @@ class PetProfileAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     # can filter by species age and fosterer
     list_filter = ('species', 'age', ('fosterer', admin.EmptyFieldListFilter)) 
 
+    filter_horizontal = ('character_traits','allergies','disabilities')
+
     # display fostering status
     def foster_status(self, obj):
         return "Available" if obj.fosterer is None else f"Fostered"
 
     foster_status.admin_order_field = 'fosterer'  
     foster_status.short_description = "Foster Status"
+
+
+
+
+@admin.register(FavoritedPet)
+class FavoritedPet(admin.ModelAdmin):
+    list_display = ('user', 'pet')
+    search_fields = ('user__username', 'pet__name')

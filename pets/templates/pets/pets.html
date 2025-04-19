@@ -3,6 +3,8 @@
 
 {% block head %}
 <style>
+
+
     .pet-container {
         display: flex;
         flex-wrap: wrap;
@@ -11,19 +13,22 @@
     }
 
     .pet-card {
-        width: 150px;
+        width: 200px;
+        height: 250px;
         text-align: center;
+        cursor: pointer;
+
     }
 
     .pet-img {
         width: 100%;
-        height: 150px;
+        height: 180px;
         object-fit: cover;
         border-radius: 20px;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .pet-name {
+    .pet-info {
         margin-top: 5px;
         font-weight: bold;
         font-size: 16px;
@@ -63,6 +68,14 @@
         margin-left: 10px;
         
     }
+
+    #ideal-icon{
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        margin-left: 10px;
+        
+    }
     #pet-heart-icon{
         width: 20px;
         height: 20px;
@@ -96,6 +109,51 @@
         cursor: pointer; 
     }
 
+ 
+    
+    .ideal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#ideal-filter {
+  background-color: #D7E7CF;
+  padding: 25px;
+  border-radius: 15px;
+  width: 500px;
+  max-width: 90vw;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.ideal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form-select {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: none;
+  background-color: #fdf7d9;
+}
+
+.ideal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
 
     .form-select {
     background-color: #fdf7d9;  
@@ -139,83 +197,504 @@
     align-items: center;  
 }
 
+hr {
+    border-top: 1px solid rgb(0, 0, 0);
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 90%;
+}
+
+.pet-profile h3 {
+    margin-top: 10px;
+    margin-bottom: 3px;
+    
+}
+
+.pet-profile {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+  max-width: 800px;
+  padding: 2%;
+}
+
+.cloud {
+    position: absolute;
+    width: 500px;
+    height: auto;
+    z-index: 1;
+    right:500px;
+    top:500px;
+    
+}
+
+
+.cloud-left {
+    z-index:1;
+    left:500px;
+    top:400px;
+}
+
+
+
+#pet-profile-photo{
+    width: 100%;
+    height: 400px; 
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid #433B2D !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.left-section{
+    flex-direction: column;
+    align-items: center;
+    width:50%;
+    position: relative;
+}
+
+#right-section{
+    position: relative;
+    float:right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+}
+
+
+
+#basic-content{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    background-color: #fffec9 !important;
+    width:300px;
+    height:auto;
+    border-radius: 15px;
+    z-index: 3;
+}
+
+#important-content{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    background-color: #fffffb !important;
+    width:300px;
+    height:auto;
+    border-radius: 15px;
+    z-index: 3;
+}
+
+.foster-btn{
+    background-color: #ACE791 !important;
+    border-color: #433B2D !important;
+    border-radius: 15px;
+    width: 250px;
+    height: 60px;
+    margin-top: 40px;
+    color: black;
+    font-weight: bold;
+}
+
+#pet-heart-icon-profile{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.close-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 40px;
+    color: #433B2D;
+    cursor: pointer;
+
+}
+
+
+hr {
+    border: none;
+    border-top: 1px solid #999;
+    margin: 5px 0;
+}
+
+#overlay{
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.5); 
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+
+.profile-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #c5ebb3;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+.profile-foreground {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+.profile-close-btn {
+  position: absolute;
+  top: -10px;
+  right: 0px;
+  background: none;
+  border: none;
+  font-size: 50px;
+  cursor: pointer;
+  z-index: 4; 
+}
+
+.hidden {
+  display: none!important;
+}
+
 </style>
 {% endblock %}
 
 
 {% block content %}
-<div class="card p-3">
-    <div class="d-flex justify-content-between align-items-center">
-        <h5 class="m-0">Filters</h5>
-        <button class="btn btn-sm btn-close" onclick="closeFilterMenu()">X</button>
-    </div>
-    <div class="filter-container">
-        <div class="mt-3">
-            <select id="ageFilter" class="form-select">
-                <option selected>Age</option>
-                <option>1-5</option>
-                <option>5-10</option>
-                <option>10-15</option>
-            </select>
+
+
+<div id="overlay" class="hidden">
+<div class="pet-profile">
+    <img src="{% static 'pets/images/cloud.svg' %}" class="cloud cloud-left" />
+    <img src="{% static 'pets/images/cloud.svg' %}" class="cloud cloud-right" />
+
+    <div class="profile-bg"></div>
+
+<div class=profile-foreground> 
+    <div class="left-section">
+        <h2 id="pet-name">Kumo, 2</h2>
+        <img id="pet-profile-photo" src="{% static 'pets/images/kumo.jpg' %}" alt="Kumo the dog" />
+        <button class="foster-btn">Request Fostering</button>
+        <a id="heart-icon-profile" href="/toggle_favorite/0/">
+            <img id="pet-heart-icon-profile"
+                 src="{% static 'pets/images/heart.svg' %}"
+                 alt="Favorite this pet" />
+          </a>    
         </div>
-        <div class="mt-3">
-            <select id="breedFilter" class="form-select">
-                <option selected>Breed</option>
-                <option>Labrador</option>
-                <option>Beagle</option>
-                <option>Poodle</option>
-            </select>
-        </div>
-        <div class="mt-3">
-            <select id="sizeFilter" class="form-select">
-                <option selected>Size</option>
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-            </select>
-        </div>
-        <div class="mt-3">
-            <select id="colorFilter" class="form-select">
-                <option selected>Color</option>
-                <option>Black</option>
-                <option>White</option>
-                <option>Brown</option>
-            </select>
-        </div>
-        <div class="mt-3">
-            <select id="genderFilter" class="form-select">
-                <option selected>Gender</option>
-                <option>Male</option>
-                <option>Female</option>
-            </select>
+
+
+    <div class="right-section">
+        <div id="basic">
+            <h3>Basic</h3>
+            <div id="basic-content">
+            <h5><strong>Breed</strong></h5>
+            <hr></hr>
+            <p id="pet-breed">Pomeranian Teacup</p>
+            <h5><strong>Gender</strong></h5>
+            <hr></hr>
+            <p id="pet-gender">Male</p>
+            <h5><strong>Shelter Arrival</strong></h5>
+            <hr></hr>
+            <p id="pet-shelter_arrival"></p>
+            <h5><strong>Character</strong></h5>
+            <hr></hr>
+            <p id="pet-character">Playful, Social</p>
         </div>
     </div>
-    <div class="d-flex justify-content-between mt-3">
-        <button class="btn btn-outline-secondary" onclick="clearFilters()">Clear</button>
-        <button class="btn btn-success" onclick="applyFilters()">Filter</button>
+
+        <div class="important-info">
+            <h3>Important</h3>
+            <div id="important-content">
+            <h5><strong>Known Allergies</strong></h5>
+            <hr></hr>
+            <p id="pet-allergies">Febreeze</p>
+            <h5><strong>Disabilities</strong></h5>
+            <hr></hr>
+            <p id="pet-disabilities">None</p>
+            </div>
+        </div>
+ 
+    </div>
+    <button class="profile-close-btn" onclick="closePetProfile()">×</button>
+</div>
+
+</div>
+</div>
+
+<!-- Filter Section -->
+<form method="get" class="filter-container">
+
+    <div class="card p-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="m-0">Filters</h5>
+            <button class="btn btn-sm btn-close" onclick="closeFilterMenu()">X</button>
+        </div>
+        <div class="filter-container">
+            <div class="mt-3">
+                <select name="age" class="form-select">
+                    <option value="">Age</option>
+                    <option value="1-5">1-5</option>
+                    <option value="5-10">5-10</option>
+                    <option value="10-15">10-15</option>
+                  </select>
+                </div>
+            <div class="mt-3">
+                <select name="breed" class="form-select">
+                <option value="">Breed</option>
+                {% for val, label in breed_choices %}
+                    <option value="{{ val }}">{{ label }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div class="mt-3">
+                <select name="size" class="form-select">
+                <option value="">Size</option>
+                {% for val, label in size_choices %}
+                    <option value="{{ val }}">{{ label }}</option>
+                {% endfor %}
+                </select>
+            </div>
+        
+            <div class="mt-3">
+                <select name="gender" class="form-select">
+                <option value="">Gender</option>
+                {% for val, label in gender_choices %}
+                    <option value="{{ val }}">{{ label }}</option>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-outline-secondary" onclick="clearFilters()">Clear</button>
+            <button class="btn btn-success" onclick="applyFilters()">Filter</button>
+        </div>
+    </div>
+
+</form>
+
+
+<!-- Top bar -->
+<div class="container col-lg-9">
+    <div id="search-bar-section" class="mt-5">
+        <img id="filter-icon" src="{% static 'pets/images/filter.svg' %}" alt="filter icon" class="filter-btn" onclick="openFilterMenu()">
+        <form method="GET" action="{% url 'pet-list' %}">
+            <input id="search-bar" name="search" type="text" placeholder="Search pets" style="width: 300px !important; padding: 8px 16px; border-radius: 25px;">
+        </form>
+    
+        <img id="heart-icon" src="{% static 'pets/images/heart.svg' %}" alt="heart icon" onclick="toggleFavorites()" />
+        <img id="ideal-icon" src="{% static 'pets/images/verification.png' %}" alt="ideal pet icon" onclick="openIdealMenu()" />
+    </div>
+
+
+   <!-- Ideal Pet Section --> 
+    <div class="ideal-wrapper">
+        <div id="ideal-filter">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="m-0">Ideal Pet</h5>
+                <button class="btn btn-sm btn-close" onclick="closeIdealMenu()">×</button>
+            </div>
+            <form method="POST" action="{% url 'save_ideal_pet' %}">
+                    {% csrf_token %}
+                <div class="filter-container">
+                <div class="mt-3">
+                    <select name="ideal_age" class="form-select">
+                    <option value="">Age</option>
+                    <option value="1-5">1–5</option>
+                    <option value="5-10">5–10</option>
+                    <option value="10-15">10–15</option>
+                    </select>
+                </div>
+            
+                <div class="mt-3">
+                    <select name="ideal_breed" class="form-select">
+                    <option value="">Breed</option>
+                    {% for val, label in breed_choices %}
+                        <option value="{{ val }}">{{ label }}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mt-3">
+                    <select name="ideal_size" class="form-select">
+                    <option value="">Size</option>
+                    {% for val, label in size_choices %}
+                        <option value="{{ val }}">{{ label }}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mt-3">
+                    <select name="ideal_gender" class="form-select">
+                        <option value="">Gender</option>
+                        {% for val, label in gender_choices %}
+                          <option value="{{ val }}">{{ label }}</option>
+                        {% endfor %}
+                      </select>
+                      
+                </div>
+
+                <div class="mt-3">
+                    <select name="ideal_fur" class="form-select">
+                    <option value="">Fur Type</option>
+                    {% for val, label in fur_choices %}
+                        <option value="{{ val }}">{{ label }}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mt-3">
+                    <select name="ideal_disabilities" class="form-select">
+                        <option value="">Disabilities</option>
+                        {% for disability in disability_choices %}
+                          <option value="{{ disability.id }}">{{ disability.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mt-3">
+                    <select name="ideal_personality" class="form-select">
+                        <option value="">Personality</option>
+                        {% for trait in personality_choices %}
+                          <option value="{{ trait.id }}">{{ trait.name }}</option>
+                        {% endfor %}
+                      </select>
+                </div>
+
+            
+            </div>
+        
+            <div class="mt-3 d-flex justify-content-around">
+            <button type="button" class="btn btn-secondary" onclick="resetIdealForm()">Clear</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+
+            </div>
+        </div>
     </div>
 </div>
 
+<!-- Favorite Pets Section -->
 
-
-
-<div class="container col-lg-9">
-    <div id="search-bar-section" class="container mt-5 col-auto">
-        
-        <img id='filter-icon' src="{% static 'pets/images/filter.svg' %}" alt="filter icon" class="filter-btn" onclick="openFilterMenu()">
-        <input id="search-bar" type="text" id="search" placeholder="Search pets">
-        <img id='heart-icon' src="{% static 'pets/images/heart.svg' %}" alt="heart icon">
+    <div id="favorite-section" class="container col-lg-10" style="display: none;">
+        <h3>My Favorite Pets </h3>
+        <div class="pet-container">
+            {% for pet in favorited_pets %}
+            <div class="pet-card"
+                onclick="openPetProfile(this)"
+                data-id="{{ pet.id }}"
+                data-name="{{ pet.name }}"
+                data-age="{{ pet.age }}"
+                data-image="{{ pet.image.url }}"
+                data-breed="{{ pet.breed }}"
+                data-gender="{{ pet.gender }}"
+                data-shelter_arrival="{{ pet.shelter_arrival|date:'F jS' }}"
+                data-character="{{ pet.character_traits.all|join:', ' }}"
+                data-allergies="{{ pet.allergies.all|join:', ' }}"
+                data-disabilities="{{ pet.disabilities.all|join:', ' }}"
+                data-favorited="true">
+                       <img src="{{ pet.image.url }}" alt="{{ pet.name }}" class="pet-img">
+                <div class="pet-info">{{ pet.name }}, {{ pet.age }}</div>
+                <a href="{% url 'toggle_favorite' pet.id %}">
+                    {% if pet in favorited_pets %}
+                        <img id="pet-heart-icon" src="{% static 'pets/images/heartfilled.svg' %}" alt="unfavorite this pet">
+                    {% else %}
+                        <img id="pet-heart-icon" src="{% static 'pets/images/heart.svg' %}" alt="favorite this pet">
+                    {% endif %}
+                </a>      </div>
+            {% endfor %}
+        </div>
     </div>
+
+
+    <!-- Suggested Pets Section -->
+
+    {% if user.is_authenticated %}
+  <div class="container mt-5 col-md-10 col-auto">
+    <h3>Suggested Pets for You</h3>
+    <div class="pet-container">
+        {% if suggested_pets and suggested_pets.exists %}
+            {% for pet in suggested_pets %}
+            <div class="pet-card"
+                onclick="openPetProfile(this)"
+                data-id="{{ pet.id }}"
+                data-name="{{ pet.name }}"
+                data-age="{{ pet.age }}"
+                data-image="{{ pet.image.url }}"
+                data-breed="{{ pet.breed }}"
+                data-gender="{{ pet.gender }}"
+                data-shelter_arrival="{{ pet.shelter_arrival|date:'F jS' }}"
+                data-character="{{ pet.character_traits.all|join:', ' }}"
+                data-allergies="{{ pet.allergies.all|join:', ' }}"
+                data-disabilities="{{ pet.disabilities.all|join:', ' }}"
+                data-favorited="{% if pet in favorited_pets %}true{% else %}false{% endif %}">
+                       <img src="{{ pet.image.url }}" alt="{{ pet.name }}" class="pet-img">
+                <div class="pet-info">{{ pet.name }}, {{ pet.age }}</div>
+                <a href="{% url 'toggle_favorite' pet.id %}">
+                    {% if pet in favorited_pets %}
+                        <img id="pet-heart-icon" src="{% static 'pets/images/heartfilled.svg' %}" alt="unfavorite this pet">
+                    {% else %}
+                        <img id="pet-heart-icon" src="{% static 'pets/images/heart.svg' %}" alt="favorite this pet">
+                    {% endif %}
+                </a>
+                    </div>
+            {% endfor %}
+      {% else %}
+        <p>No matching pets found based on your ideal preferences.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+    <hr>
+    
+
+    <!-- All Pets Section -->
     <div class="container mt-5 col-md-10 col-auto">
+        <h3>All Pets</h3>
         <div class="pet-container">
             {% for pet in pets %}
-                <div class="pet-card">
-                    <img src="{{ pet.image }}" alt="{{ pet.name }}" class="pet-img">
-                    <div class="pet-name">{{ pet.name }}, {{ pet.age }}</div>
-                    <img id='pet-heart-icon' src="{% static 'pets/images/heart.svg' %}" alt="heart this pet">
-    
-                </div>
-            {% endfor %}
+    <div class="pet-card"
+        onclick="openPetProfile(this)"
+        data-id="{{ pet.id }}"
+        data-favorited="{% if pet in favorited_pets %}true{% else %}false{% endif %}"
+        data-name="{{ pet.name }}"
+        data-age="{{ pet.age }}"
+        data-breed="{{ pet.breed }}"
+        data-gender="{{ pet.gender }}"
+        data-shelter_arrival="{{ pet.shelter_arrival|date:'F jS' }}"
+        data-character="{{ pet.character_traits.all|join:', ' }}"
+        data-allergies="{{ pet.allergies.all|join:', ' }}"
+        data-disabilities="{{ pet.disabilities.all|join:', ' }}"
+        data-image="{{ pet.image.url }}">
+        
+        <img src="{{ pet.image.url }}" alt="{{ pet.name }}" class="pet-img">
+        
+        <div class="pet-info">{{ pet.name }}, {{ pet.age }}</div>
+        
+        <a href="{% url 'toggle_favorite' pet.id %}">
+        {% if pet in favorited_pets %}
+            <img id="pet-heart-icon" src="{% static 'pets/images/heartfilled.svg' %}" alt="unfavorite this pet">
+        {% else %}
+            <img id="pet-heart-icon" src="{% static 'pets/images/heart.svg' %}" alt="favorite this pet">
+        {% endif %}
+        </a>
+    </div>
+    {% endfor %}
         </div>
     </div>
 </div>
@@ -223,13 +702,67 @@
 
 
 <script>
-    function openFilterMenu() {
+function openFilterMenu() {
     document.querySelector(".card.p-3").classList.add("active");
 }
 
 function closeFilterMenu() {
     document.querySelector(".card.p-3").classList.remove("active");
 }
+
+function toggleFavorites() {
+    const favSection = document.getElementById('favorite-section');
+    const heartIcon = document.getElementById('heart-icon');
+    const isVisible = favSection.style.display === 'block';
+
+    favSection.style.display = isVisible ? 'none' : 'block';
+    heartIcon.src = isVisible
+      ? "{% static 'pets/images/heart.svg' %}"            
+      : "{% static 'pets/images/heartfilled.svg' %}";    
+}
+
+function openIdealMenu() {
+    document.querySelector('.ideal-wrapper').style.display = 'flex';
+}
+
+function closeIdealMenu() {
+    document.querySelector('.ideal-wrapper').style.display = 'none';
+}
+
+function openPetProfile(card) {
+  const overlay = document.getElementById('overlay');
+  overlay.classList.remove('hidden');
+  const petId = card.dataset.id;
+
+
+  document.getElementById('pet-name').textContent = `${card.dataset.name}, ${card.dataset.age}`;
+  document.getElementById('pet-profile-photo').src = card.dataset.image;
+  document.getElementById('pet-breed').textContent = card.dataset.breed;
+  document.getElementById('pet-gender').textContent = card.dataset.gender;
+  document.getElementById('pet-shelter_arrival').textContent = card.dataset.shelter_arrival;
+  document.getElementById('pet-character').textContent = card.dataset.character;
+  document.getElementById('pet-allergies').textContent = card.dataset.allergies;
+  document.getElementById('pet-disabilities').textContent = card.dataset.disabilities;
+  document.getElementById('heart-icon-profile').href = `/pets/favorite/${petId}/`;
+
+  const isFavorited = card.dataset.favorited === "true";
+
+  const modalHeart = document.getElementById('pet-heart-icon-profile');
+  const modalHeartLink = document.getElementById('heart-icon-profile');
+
+    modalHeart.src = isFavorited
+    ? "/static/pets/images/heartfilled.svg"
+    : "/static/pets/images/heart.svg";
+
+    modalHeart.setAttribute("data-pet-id", petId);
+    modalHeartLink.href = `/pets/favorite/${petId}/`;
+    console.log("Favorite?", isFavorited, "Pet ID:", petId);
+
+}
+  function closePetProfile() {
+    document.getElementById('overlay').classList.add('hidden');
+  }
+
 
 </script>
 

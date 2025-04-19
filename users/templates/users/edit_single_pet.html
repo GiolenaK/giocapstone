@@ -1,0 +1,135 @@
+
+{% extends "users/base.html" %}
+<!-- Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<!-- jQuery (required) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{% load static %}
+
+{% block head %}
+
+<style>
+
+#form-part{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display:flex
+}
+
+
+
+button,#back{
+    background-color: #ACE791!important;
+    border-color: #433B2D !important;
+    border-radius:15px !important;
+    border-width: 2px !important;
+    color: black !important;
+    height:60px;
+    width:200px;
+    margin-top: 10px;
+    align-content: center;
+    font-weight: bold!important;
+    margin-bottom:100px;
+    
+}
+
+label{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+    
+}
+.vl {
+  border-left: 6px solid green;
+  height: 500px;
+}
+
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container col-lg-9"> 
+    <h2>Edit Pet: <b>{{ pet.name }}</b></h2>
+
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div id="form-part"> 
+    <div class="col-lg-6">
+        <div class="mb-3">
+            <label for="{{ form.name.id_for_label }}">Name:</label>
+            <div id="field">{{ form.name }}</div>
+        </div> 
+        
+        <div class="mb-3">
+            <label for="{{ form.species.id_for_label }}">Species:</label>
+            <div id="field">{{ form.species }}</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="{{ form.gender.id_for_label }}">Gender:</label>
+            <div id="field">{{ form.gender }}</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="{{ form.age.id_for_label }}">Age:</label>
+            <div id="field">{{ form.age }}</div>
+        </div> 
+        
+        <div class="mb-3">
+            <label for="{{ form.size.id_for_label }}">Size:</label>
+            <div id="field">{{ form.size }}</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="{{ form.breed.id_for_label }}">Breed:</label>
+            <div id="field">{{ form.breed }}</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="{{ form.fur.id_for_label }}">Fur:</label>
+            <div id="field">{{ form.fur }}</div>
+        </div> 
+        
+        <div class="mb-3">
+            <label for="{{ form.shelter_arrival.id_for_label }}">Shelter Arrival:</label>
+            <div id="field">{{ form.shelter_arrival }}</div>
+        </div>
+    </div>
+    <vl></vl>
+    <div class="col-lg-6">
+      <div class="mb-3">
+        <label for="{{ form.character_traits.id_for_label }}">Character Traits:</label>
+        <div id="field">{{ form.character_traits }}</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.allergies.id_for_label }}">Allergies:</label>
+        <div id="field">{{ form.allergies }}</div>
+      </div> 
+      
+      <div class="mb-3">
+        <label for="{{ form.disabilities.id_for_label }}">Disabilities:</label>
+        <div id="field">{{ form.disabilities }}</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.image.id_for_label }}">Image:</label>
+        <div id="field">{{ form.image }}</div>
+      </div>
+    </div>
+</div>  
+    <div id="button-area">
+      <button type="submit" class="btn btn-success">Save Changes</button>
+    <a id="back" href="{% url 'edit-pets' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+
+    </form>
+</div>
+
+{% endblock content %}

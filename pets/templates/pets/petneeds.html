@@ -12,7 +12,7 @@
     width: 80%; 
     margin: 0 auto; 
     text-align: left;
-}
+    }
 
     #dog-section h2,#cat-section h2{
         margin-bottom: 3rem;
@@ -23,12 +23,12 @@
     align-items: center;
     margin-bottom: 20%;
     justify-content: space-between;
-  }
+    }
 
 
-  p{
+    p{
     font-size:18px;
-  }
+    }
  
     hr {
     border-top: 1px solid rgb(0, 0, 0);
@@ -36,7 +36,17 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
     width: 80%;
-}
+    }
+
+    #toxic{
+    color: rgb(3, 179, 61);
+    font-weight: bold;
+    }
+   
+
+    #toxic:hover{
+        color: rgb(16, 90, 41);
+    }
 </style>
 
 {% endblock%} 
@@ -49,11 +59,11 @@
         <!-- Nutrition Section -->
         <div class="row align-items-center mb-4">
         <div class="col-md-9">
-            <h2><u>Dog Care</u></h2>
+            <h2>Dog Care</h2>
             <h3><b>Nutrition</b></h3>
             <p>
             Providing a nutritious diet is one of the most important aspects of dog care.<br>
-            Avoid feeding your dog table scraps, especially foods that are toxic to them.<br>
+            Avoid feeding your dog table scraps, especially foods that are <a id="toxic" href="{% url 'pet-toxic' %}">toxic</a> to them.<br>
             Choose high-quality dog food that meets their age, size, and breed requirements.
             </p>
         </div>
@@ -123,12 +133,12 @@
         <!-- Nutrition Section -->
         <div class="row align-items-center mb-4">
             <div class="col-md-9">
-            <h2><u>Cat Care</u></h2>
+            <h2>Cat Care</h2>
             <h3><b>Nutrition</b></h3>
             <p>
                 Cats require a diet rich in protein and nutrients to support their health. <br>
                 Choose a high-quality cat food that aligns with their age and activity levels. <br>
-                Always keep their water bowl fresh and accessible, avoid toxic foods.
+                Always keep their water bowl fresh and accessible, avoid <a id="toxic" href="{% url 'pet-toxic' %}">toxic</a> foods.
             </p>
             </div>
             <div class="col-md-3 text-md-end text-center">

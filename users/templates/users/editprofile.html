@@ -69,6 +69,15 @@
     margin-bottom: 20%;
 }
 
+
+#profile-preview {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
 </style>
 {% endblock %}
 
@@ -80,38 +89,93 @@
         <h2>Edit Profile Information</h2>
         <div id="section" class="row justify-content-center">
             <div class="col-md-4 text-center">
-                <img class="img-fluid rounded-circle mb-3" src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="200px" height="auto">
-                <div>
-                    <button id="image-button" type="button" class="btn rounded-pill">CHANGE IMAGE</button>
-                </div>
+                <form id="image-upload-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="image" id="profile-image-input" style="display: none;" />
+                </form>
+                
+                {% if user.profile_photo %}
+                <img id="profile-preview" src="{{ user.profile_photo.url }}" alt="Profile" >
+            {% else %}
+                <img id="profile-preview" src="{% static 'users/images/userprofile.png' %}" alt="Default Profile">
+            {% endif %}
+            <button type="button" id="image-button" class="btn btn-pill">CHANGE IMAGE</button>
+                
             </div>
             <div class="vl"></div>
             <div class="col-md-5 ">
-                <form>
+                <form method="POST">
+                    {% csrf_token %}
+                    
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Username</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="username help" placeholder="Enter Username">
+                        <label for="exampleInputUsername">Username</label>
+                        {{ form.username }}
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">E-mail</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
+                        {{ form.email }}
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        {{ form.password }}
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword2">Repeat Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                        {{ form.password_repeat }}
                     </div>
                     <div>
                     <button id="save-button" type="submit" class="btn btn-primary">SAVE CHANGES</button>
                     </div>
+
+                    {% if form.errors %}
+                <div class="form-errors">
+                    <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+
+<script>
+    document.getElementById('image-button').addEventListener('click', function () {
+        document.getElementById('profile-image-input').click();
+    });
+    
+    document.getElementById('profile-image-input').addEventListener('change', function () {
+        const fileInput = this;
+        const formData = new FormData();
+        formData.append('image', fileInput.files[0]);
+    
+        fetch("{% url 'upload-profile-image' %}", {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            },
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                location.reload();
+            } else {
+                alert("Failed to upload image.");
+            }
+        });
+    });
+    </script>
+    
+  
 
 {% endblock content %}

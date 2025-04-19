@@ -24,8 +24,9 @@
         font-family: 'Comfortaa';
     }
 
-    h1,h2{
-        font-family: 'Montserrat';
+    h2{
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 
     #section{
@@ -33,97 +34,114 @@
     }
 
     
+#profile-preview {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
 
 </style>
 {% endblock %}
 
 {% block content %}
 
-<div class="container col-lg-10"> 
+    <div class="container col-lg-9"> 
 
-    <body>
-        <h1>My Profile</h1>
+        <body>
+        <h2>My Profile</h2>
+
+        {% if user.user_type == "fosterer" %}
+            <div id ="section" class="row justify-content-center align-items-center">
+                <div class="col-md-5 text-center">
+                    {% if user.profile_photo %}
+                    <img id="profile-preview" src="{{ user.profile_photo.url }}" alt="Profile" >
+                    {% else %}
+                        <img src="{% static 'users/images/userprofile.png' %}" alt="Default Profile" >
+                    {% endif %}            
+                    <h3>{{ user.username }}</h3>
+                    <h2><b>Fosterer</b></h2>
+                </div>
+                <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
+                    <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
+                    <a id="choice" href="#" class="btn btn-primary rounded-pill">View Fostering History</a>
+                    <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+                    <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
+                </div>
+            </div>
+        
+       
+
+        
+        {% elif user.user_type == "admin" %}
+            <div id ="section" class="row justify-content-center align-items-center">
+                <div class="col-md-5 text-center">
+                    {% if user.profile_photo %}
+                    <img id="profile-preview" src="{{ user.profile_photo.url }}" alt="Profile" >
+                    {% else %}
+                        <img src="{% static 'users/images/userprofile.png' %}" alt="Default Profile" >
+                    {% endif %}
+                    <h3>{{ user.username }}</h3>
+                    <h2><b>Admin</b></h2>
+                </div>
+                <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
+                    <a id="choice" href="{% url 'edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
+                    <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+                    <a id="choice" href="{% url 'admin:index' %}" class="btn btn-primary rounded-pill">View Admin Panel</a>
+                    <a id="choice" href="{% url 'staff-panel' %}" class="btn btn-primary rounded-pill">View Staff Panel</a>
+
+                    <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
+
+                </div>
+            </div>
+        
+
+        {% elif user.user_type == "staff" %}
+            <div id ="section" class="row justify-content-center align-items-center">
+                <div class="col-md-5 text-center">
+                    {% if user.profile_photo %}
+                    <img id="profile-preview" src="{{ user.profile_photo.url }}" alt="Profile" >
+                    {% else %}
+                        <img src="{% static 'users/images/userprofile.png' %}" alt="Default Profile" >
+                    {% endif %}     
+                    <h3>{{ user.username }}</h3>
+                    <h2><b>Staff</b></h2>
+                </div>
+                <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
+                    <a id="choice" href="{% url 'edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
+                    <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+                    <a id="choice" href="{% url 'staff-panel' %}" class="btn btn-primary rounded-pill">View Staff Panel</a>
+                    <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
+
+                </div>
+            </div>
     
-        <!-- TESTING IF STATEMENTS
-        {% if user %}
-        <p>Welcome, {{ user }}!</p>
+
         {% else %}
-            <h2>oops</h2>
+            <div id ="section" class="row justify-content-center align-items-center">
+                <div class="col-md-5 text-center">
+                    {% if user.profile_photo %}
+                    <img id="profile-preview" src="{{ user.profile_photo.url }}" alt="Profile" >
+                    {% else %}
+                        <img src="{% static 'users/images/userprofile.png' %}" alt="Default Profile" >
+                    {% endif %}
+                    <h3>{{ user.username }}</h3>
+                    <h2><b>{{ user.user_type }}</b></h2>
+                </div>
+                <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
+                    <a id="choice" href="{% url 'edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
+                    <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+                    <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
+
+                </div>
+            </div>
         {% endif %}
-        -->
-    {% if user.status == "Fosterer" %}
-    <div id ="section" class="row justify-content-center align-items-center">
-        <div class="col-md-5 text-center">
-            <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-            <h3>{{ user.username }}</h3>
-            <h2><b>{{ user.user_type }}</b></h2>
-        </div>
-        <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
-            <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
-            <a id="choice" href="#" class="btn btn-primary rounded-pill">View Fostering History</a>
-            <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
-            <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
-        </div>
-        </div>
     </div>
-    
-    
-    {% elif user.status == "Admin" %}
-    <div id ="section" class="row justify-content-center align-items-center">
-        <div class="col-md-5 text-center">
-            <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-            <h3>{{ user.username }}</h3>
-            <h2><b>{{ user.user_type }}</b></h2>
-    </div>
-    <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
-        <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
-        <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
-        <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
-
-    </div>
-    
-    
-    </div>
-</div>
-    {% elif user.status == "Staff" %}
-    <div id ="section" class="row justify-content-center align-items-center">
-        <div class="col-md-5 text-center">
-            <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-            <h3>{{ user.username }}</h3>
-            <h2><b>{{ user.user_type }}</b></h2>
-    </div>
-        <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
-            <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
-            <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
-            <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
-
-        </div>
-    </div>
-    </div>
-
-    {% else %}
-    <div id ="section" class="row justify-content-center align-items-center">
-        <div class="col-md-5 text-center">
-            <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-            <h3>{{ user.username }}</h3>
-            <h2><b>{{ user.user_type }}</b></h2>
-    </div>
-
-
-        <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
-            <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
-            <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
-            <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
-
-        </div>
-    </div>
-    </div>
-
-{% endif %}
-<!-- <img src="{% static 'users/images/vaelan.png' %}" alt="My Image">  WORKING--> 
-    
-<!--<img src="{% static 'static/images/dog.jpg' %}"> not working --> 
 
 
 
 {% endblock content %}
+
+

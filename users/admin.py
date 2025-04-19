@@ -5,6 +5,7 @@ from import_export import resources
 from .models import CustomUser
 from django.core.exceptions import ValidationError
 from django.shortcuts import redirect
+from .models import IdealPetProfile
 
 
 # Import export function
@@ -40,6 +41,7 @@ class CustomUserAdmin(ImportExportModelAdmin, UserAdmin):
 
 
 
+
     def response_change(self, request, obj):
     
         if obj.user_type in ["admin", "staff"] and obj.fosterer_status != "none":  #raise an error if the user type is admin or staff and fosterer status is not none
@@ -52,3 +54,11 @@ class CustomUserAdmin(ImportExportModelAdmin, UserAdmin):
             return redirect(request.path)  
         
         return super().response_change(request, obj)
+    
+
+
+@admin.register(IdealPetProfile)
+class IdealPetProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'species', 'dog_breed', 'cat_breed', 'min_age', 'max_age')
+    search_fields = ('user__username', 'species', 'breed')
+    filter_horizontal = ('character_traits', 'allergies', 'disabilities')

@@ -18,10 +18,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from users.views import save_ideal_pet
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('pets.urls')),
     path('users/', include('users.urls')),
     path('pets/', include('pets.urls')),
+    path('save-ideal/', save_ideal_pet, name='save_ideal_pet'),
+
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+
+

@@ -18,14 +18,31 @@
         align-items:center;
         gap: 0.5rem;
         text-align:center;
-        margin-top:3rem;
-        margin-bottom:3rem;
+
     }
 
     #text{
-        margin-right: 5rem;
+        margin-top: 50px !important;
+    }
+    
+    a{
+        color: rgb(3, 179, 61);
     }
    
+
+    a:hover{
+        color: rgb(16, 90, 41);
+    }
+
+    #titlesection{
+        flex:left;
+        padding:0;
+        margin:0;
+    }
+
+    #contact-us{
+        margin-bottom:100px;
+    }
 </style>
 
 {% endblock%} 
@@ -42,34 +59,27 @@
         <img id="grass-left" src="{% static 'pets/images/grass2.png' %}" alt="grass image" width="100px" height="auto" >
     
     </div>
-    <div class="text">
+    <div id="text" class="container col-lg-8">
         <p>
-        Welcome to FurryFosters where love and second chances come together. Founded
-        with a passion for animal welfare, we are dedicated to rescuing,
-        rehabilitating, and rehoming cats and dogs in need. Our mission is to provide
-        a safe haven for abandoned, neglected, and stray animals while connecting them
-        with loving forever homes.
+        Welcome to FurryFosters! Our purpose is to find loving homes for our furry buddies.
+        In our shelters, we take in animals who have been rescued on the streets or have lost their homes
+    
         </p>
         <p>
-        At FurryFosters, we believe every pet deserves a chance to thrive. Our team of
-        devoted staff and volunteers works tirelessly to ensure each animal receives
-        the care, attention, and compassion they deserve. From veterinary services to
-        daily enrichment, we strive to meet their physical and emotional needs.
+        At FurryFosters, we believe that all our furry friends deserve a chance at a loving home.
+        In order to ensure their safety and well-being, a group of volunteers is here to assist.
         </p>
         <p>
-        We also focus on educating our community about responsible pet ownership and
-        the importance of spaying and neutering to reduce pet overpopulation. Through
-        outreach programs, events, and partnerships, we aim to create a world where
-        every animal is valued and cared for.
+        It is important to us, that people stop seeing animals as simple objects, which can be bought.
+        Fostering and adopting are the best ways to go about adding an animal to your household.
         </p>
         <p>
-        Whether you're looking to adopt, foster, volunteer, or donate, we invite you
-        to join us in making a difference. Together, we can change lives—one paw at a
-        time. Thank you for supporting our mission to give these wonderful animals the
-        loving homes they deserve.
+        We would be glad to have you join our community, whether that is through fostering or volunteering.
+        Make sure to spread the word, and promote fostering to everyone around you. Together we can help 
+        make a difference in the lives of our little buddies!
         </p>
     
-        <p id="contact-us"><b>Feel free to <u>contact us</u> regarding any concerns!</b></p>
+        <p id="contact-us"><b>Feel free to <a href="{% url 'contact' %}">contact us</a> regarding any concerns!</b></p>
     </div>
 </div>
 

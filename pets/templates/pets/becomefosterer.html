@@ -38,9 +38,14 @@ button{
     border-width: 2px !important;
     height: 50px;
     color:black !important;
-    margin-top:5% !important;
-}
+    margin-top:20px !important;
 
+}
+h2{
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
 
 </style>
 {% endblock %}
@@ -49,8 +54,9 @@ button{
 {% block content %}
 
 <div class="container col-lg-9">
+    <h2>Want to Become a Foster Parent?</h2>
         <div class="content">
-            <h2>Want to Become a Foster Parent?</h2>
+            
             <div id="info" class="row">
             <img
                 id="dog-image"
@@ -58,7 +64,7 @@ button{
                 alt="Photo of a person petting a dog"
                 class="w3-round">
             <div id="steps" class="col-7">
-            <p>If you are interested in joining our fostering family and aiding our effort,<br>the process is simple and easy:</p>
+            <p>If you are interested in joining our fostering family and aiding our effort, the process is simple and easy:</p>
                 <ol>
                     <li>Fill out the registration form with your real information</li>
                     <br>
@@ -68,7 +74,8 @@ button{
                     <br>
                     <li>Then, you will be free to request fostering rights for any of our furry friends</li>
                 </ol>
-                <button class="btn btn-primary">FILL OUT THE FORM</button>
+                <a href="{% url 'foster-form' %}">
+                <button class="btn btn-primary">FILL OUT THE FORM</button></a>
             </div>
             </div>
         </div>
