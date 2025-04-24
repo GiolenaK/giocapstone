@@ -1,0 +1,96 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+
+#information{
+    display: flex;
+    gap:300px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+
+h4{
+    margin-top:30px;
+    margin-bottom: 20px;
+}
+#special{
+    font-family: 'Comfortaa';
+    font-size: 20px;
+    color: #000000;
+}
+
+#proof{
+    width: 500;
+    height: auto;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.hr{
+    width:10px !important;
+    color:black;
+}
+
+button{
+    background-color: #ACE791!important;
+    border-color: #433B2D !important;
+    border-radius:15px !important;
+    border-width: 2px !important;
+    color: black !important;
+    height:50px;
+    width:200px;
+    margin-top: 40px;
+    align-content: center;
+    font-weight: bold!important;
+}
+
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="container col-lg-10"> 
+    <h2> Form by <strong>{{ form.user.username}}</strong> </h2>
+    <p>Submitted on: {{ form.submitted_at }}</p>
+    <hr></hr>
+    <div id="information">
+    <div class="container md">
+        <h4><strong>First Name:</strong>  </h4>
+        <p id="special">{{ form.first_name }}</p>
+        <h4><strong>Last Name:</strong>  </h4>
+        <p id="special">{{ form.last_name }}</p>
+        <h4><strong>Date of Birth:</strong> </h4>
+        <p id="special">{{ form.date_of_birth }}</p>
+        <h4><strong>Address:</strong>  </h4>
+        <p id="special">{{ form.address }}</p>
+        <h4><strong>Phone Number:</strong>  </h4>
+        <p id="special">{{ form.phone_number }}</p>
+        <h4><strong>Email:</strong>  </h4>
+        <p id="special">{{ form.email }}</p>
+    </div>
+    <div class="container md">
+        <h4><strong>Proof of Identity</strong></h4>
+        <img id="proof" src = "{{ form.proof_of_identity.url }}">
+        <h4><strong>Proof of Residence</strong></h4>
+        <img id="proof" src = "{{ form.proof_of_residence.url }}">
+        <h4><strong>Prior Experience</strong></h4>
+        <p>{{ form.prior_experience }}</p>
+        
+    </div>
+
+    <div class="container md">
+        <a  href="{% url 'badge-configuration' %}">
+            <button class="btn">Badge List</button>
+        </a>  
+        
+        <a  href="{% url 'fostering-applications' %}">
+            <button class="btn">Back</button>
+        </a>  
+        
+        </div>
+    
+</div>
+</div>
+{% endblock %}

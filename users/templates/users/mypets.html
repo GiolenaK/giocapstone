@@ -1,0 +1,110 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+#pet-profile {
+    display: flex;
+    justify-content: center;
+    gap:100px;
+    margin-bottom: 100px;
+    margin-top:20px;
+    background-color: #c5ebb3;
+    padding:40px;
+    width:80%;
+    border-radius: 20px;
+    justify-self: center;
+}
+
+#left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(255, 255, 254);
+    border-radius: 20px;
+    padding:30px;
+    width:50%;
+}
+
+#pet-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#allergies{
+    background-color: rgb(255, 255, 254);
+    border-radius: 20px;
+    padding:30px;
+    justify-items: center;
+    width:90%
+
+}
+
+hr{
+    border-width: 3px;
+}
+
+
+</style>
+
+{% endblock %}
+{% block content %}
+
+<div class="container col-lg-9"> 
+
+        <h2>My Pets</h2>
+
+        <div id="pet-profile">
+            <div id="left">
+                <img id="pet-img" src="{% static 'pets/images/bella.jpg' %}" alt="Pet Image" class="pet-image">
+                <h4>Bax,3</h4>   
+                <h5>Beagle</h5>   
+                <div id="allergies">
+                    <h5>Known Allergies</h5> 
+                    <p>Beef</p>
+                </div>  
+            </div>
+            <div id="right">
+                <div id="wrapper">
+                    <h4>Fostered on:</h4>
+                    <p>December 2nd</p>
+                </div>
+                <div id="wrapper">
+                    <h4>Expected Return to Shelter:</h4>
+                    <p>March 2nd</p>
+                </div>
+
+                <div id="wrapper">
+                    <h4>Fostering Approved By:</h4>
+                    <p>Georgia Papanikolaou</p>
+                </div>
+                <hr></hr>
+                <div id="wrapper">
+                    <h4>Shelter Information</h4>
+                </div>
+                <div id="wrapper">
+                    <h5>Address:</h5>
+                    <p>Aristotelous 5, Ampelokipoi</p>
+                </div>
+
+                <div id="wrapper">
+                    <h5>Phone Number:</h5>
+                    <p>69237183113</p>
+                </div>
+            </div>
+        
+</div>
+</div>
+
+{% endblock content %}

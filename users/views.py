@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.http import HttpResponse
 from .forms import CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
 from .utils import suggest_pets_for_user  
@@ -11,63 +10,34 @@ from .forms import UserUpdateForm
 from django.http import JsonResponse
 from .forms import PetProfileForm
 from django.shortcuts import render, get_object_or_404, redirect
+from .models import CustomUser
+from django.db.models import Q
+from .models import FosteringApplication
+from pets.choices import (FUR_CHOICES,SIZE_CHOICES,DOG_BREEDS,CAT_BREEDS,GENDER_CHOICES,SPECIES_CHOICES)
+from pets.models import (Disability,CharacterTrait,Allergy)
 
 
 
-from pets.choices import (FUR_CHOICES,
-    SIZE_CHOICES,
-    DOG_BREEDS,
-    CAT_BREEDS,
-    GENDER_CHOICES
-)
-
-from pets.models import (
-    Disability,
-    CharacterTrait,
-    Allergy,
-    )
-
-
-
-@login_required(login_url='login')  # bug fix: when user was on sign up or login and they tried to access profile
+@login_required  # bug fix: when user was on sign up or login and they tried to access profile
 def profile(request): #profile html page needs the foster and user status of the logged in user
     user = request.user  
-    if user.user_type == "Admin":
-        user_status = "Admin"
-    elif user.user_type == "Staff":
-        user_status = "Staff"
-    elif user.user_type == "Simple": 
-        if user.fosterer_status == "Accepted":
-            user_status = "Fosterer"  
-        else:
-            user_status = "Simple User"  
-    else:
-        user_status = "Unknown"  
+    user_type = user.user_type
+    fosterer_status= None
 
-    return render(request, "users/profile.html", {"user_status": user_status})
+    if user_type == "Simple":
+         fosterer_status = user.fosterer_status or "none"
+
+
+    return render(request, "users/profile.html", {'user': user, "user_type": user_type, 'fosterer_status': fosterer_status})
+
+@login_required 
 def badge(request): # badge html page needs the foster and user status of the logged in user
     user = request.user 
+    fosterer_status = user.fosterer_status or "none"
+
     print(f"User: {user.username}, User Type: {user.user_type}, Fosterer Status: {user.fosterer_status}")
+    return render(request, "users/badge.html", {'user': user, 'fosterer_status': fosterer_status})
 
-    user_type = user.user_type.lower() if user.user_type else ""
-
-    if user_type == "admin":
-        badge_status = "Admin"
-    elif user_type == "staff":
-        badge_status = "Staff"  #admin adn staff don't have accepted, rejected or pending in their badge
-    else:  
-        if user.fosterer_status == "Accepted":
-            badge_status = "Accepted"
-        elif user.fosterer_status == "Rejected":
-            badge_status = "Rejected"
-        elif user.fosterer_status == "Pending":
-            badge_status = "Pending"
-        else:
-            badge_status = "None"  
-    print(f"Assigned Badge: {badge_status}")
-
-
-    return render(request, "users/badge.html", {"status": badge_status})
 
 
 def user_login(request):
@@ -110,9 +80,11 @@ def signup(request):
     
     return render(request, "users/signup.html", {"form": form})
 
+
 def logout_view(request): #simple logout function
     logout(request)
     return redirect("login")
+
 
 
 @login_required
@@ -125,7 +97,7 @@ def user_profile(request):
     })
 
 
-# users/views.py
+
 
 @login_required
 def edit_ideal_pet(request):
@@ -141,11 +113,11 @@ def edit_ideal_pet(request):
             'size_choices': SIZE_CHOICES,
             'breed_choices': DOG_BREEDS + CAT_BREEDS,
             'gender_choices': GENDER_CHOICES,
+            'species_choices': SPECIES_CHOICES,
         })
+
 @login_required
 def save_ideal_pet(request):
-    
-
     if request.method == 'POST':
         profile, _ = IdealPetProfile.objects.get_or_create(user=request.user)
 
@@ -153,7 +125,6 @@ def save_ideal_pet(request):
         profile.disabilities.clear()
         profile.allergies.clear()
   
-        # Simple Fields
         profile.gender = request.POST.get('ideal_gender') or None
         profile.fur = request.POST.get('ideal_fur') or None
         profile.size = request.POST.get('ideal_size') or None
@@ -177,8 +148,6 @@ def save_ideal_pet(request):
                 profile.cat_breed = None
 
 
-
-        
         profile.age = request.POST.get('ideal_age') or None
 
         age_range = request.POST.get('ideal_age', '')
@@ -191,14 +160,14 @@ def save_ideal_pet(request):
                 profile.min_age = None
                 profile.max_age = None
         else:
-            # Clear the values if nothing selected
+            
             profile.min_age = None
             profile.max_age = None
-        # ManyToMany Fields
+
+        # many to many, these use tags
         trait_ids = [t for t in request.POST.getlist('ideal_personality') if t]
         disability_ids = [d for d in request.POST.getlist('ideal_disabilities') if d]
         allergy_ids = [a for a in request.POST.getlist('ideal_allergies') if a]
-
 
         if trait_ids:
             profile.character_traits.set(trait_ids)
@@ -275,3 +244,108 @@ def edit_single_pet(request, pk):
         form = PetProfileForm(instance=pet)
 
     return render(request, 'users/edit_single_pet.html', {'form': form, 'pet': pet})
+
+
+
+#only editable badges are for users who AREN'T admin or staff
+@login_required
+def badge_configuration(request):
+    users = CustomUser.objects.exclude(Q(user_type='admin') | Q(user_type='staff'))
+    return render(request, 'users/badgeconfiguration.html', {'users': users, 'user_fosterer_status': CustomUser.FOSTERER_STATUS_CHOICES,})
+
+@login_required
+def update_foster_status(request):
+    if request.method == "POST":
+        if request.method == "POST":
+            user_id = request.POST.get("user_id")
+            new_status = request.POST.get("fosterer_status")
+
+            try:
+                user = CustomUser.objects.get(pk=user_id)
+                user.fosterer_status = new_status
+                user.save()
+            except CustomUser.DoesNotExist:
+                print("User not found.")
+    print(request.POST)
+    return redirect('badge-configuration')
+
+
+#just to load the table of all pets
+@login_required
+def add_pets(request):
+    pets = PetProfile.objects.all()
+    return render(request, 'users/addpet.html', {'pets': pets})
+
+#this loads the form to add pets and fills things like dropdowns with info from the petprofileform
+@login_required
+def add_pet_form(request):
+    if request.method == "POST":
+        form = PetProfileForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('add-pets')
+        else:
+            print("Form errors:", form.errors)
+
+    else:
+        form = PetProfileForm()
+    return render(request, "users/addpetform.html", {"form": form})
+
+@login_required
+def delete_pet(request, pk):
+    pet = get_object_or_404(PetProfile, pk=pk)
+    pet.delete()
+    return redirect('edit-pets')
+
+
+
+@login_required
+def foster_request_view(request):
+    if request.method == 'POST':
+        first_name = request.POST.get('firstName')
+        last_name = request.POST.get('lastName')
+        date_of_birth = request.POST.get('dob')
+        address = request.POST.get('address')
+        phone_number = request.POST.get('phoneNumber')
+        email = request.POST.get('email')
+        proof_of_identity = request.FILES.get('proofOfIdentity')
+        proof_of_residence = request.FILES.get('proofOfResidence')
+        prior_experience = request.POST.get('priorExperience')
+
+        # save and bind to user thats logged in
+        FosteringApplication.objects.create(
+            user=request.user,
+            first_name=first_name,
+            last_name=last_name,
+            date_of_birth=date_of_birth,
+            address=address,
+            phone_number=phone_number,
+            email=email,
+            proof_of_identity=proof_of_identity,
+            proof_of_residence=proof_of_residence,
+            prior_experience=prior_experience
+        )
+
+        return redirect('become-fosterer')
+
+    return render(request, 'pets/fosteringform.html')
+
+
+#just display the submitted applications
+@login_required
+def fostering_applications(request):
+    forms = FosteringApplication.objects.filter()
+    return render(request, 'users/fosteringapplications.html', {'forms': forms})
+
+#similar to previous, just loads the data of the specific application the staff selected
+@login_required
+def form_review(request, application_id):
+    form = get_object_or_404(FosteringApplication, id=application_id)
+
+    return render(request, 'users/formreview.html', {'form': form})
+
+
+@login_required
+def my_pets(request):
+    return render(request, 'users/mypets.html')

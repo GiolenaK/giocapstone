@@ -34,14 +34,14 @@
     }
 
     
-#profile-preview {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
+    #profile-preview {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
 
 </style>
 {% endblock %}
@@ -53,7 +53,7 @@
         <body>
         <h2>My Profile</h2>
 
-        {% if user.user_type == "fosterer" %}
+        {% if user_type == "simple" %}
             <div id ="section" class="row justify-content-center align-items-center">
                 <div class="col-md-5 text-center">
                     {% if user.profile_photo %}
@@ -62,20 +62,36 @@
                         <img src="{% static 'users/images/userprofile.png' %}" alt="Default Profile" >
                     {% endif %}            
                     <h3>{{ user.username }}</h3>
-                    <h2><b>Fosterer</b></h2>
                 </div>
-                <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
-                    <a id="choice" href="{% url 'user-edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
-                    <a id="choice" href="#" class="btn btn-primary rounded-pill">View Fostering History</a>
-                    <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
-                    <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
-                </div>
+                {% if user.fosterer_status == "accepted" %}
+                    <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
+                        <a id="choice" href="{% url 'edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
+                        <a id="choice" href="{% url 'my-pets' %}" class="btn btn-primary rounded-pill">View Fostered Pets</a>
+                        <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+                        <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
+                    </div>
+
+                {% elif user.fosterer_status == "rejected" %}
+                    <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
+                        <a id="choice" href="{% url 'edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
+                        <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+                        <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
+                    </div>
+
+                {% else %}
+                    <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
+                        <a id="choice" href="{% url 'edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
+                        <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
+                        <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
+                    </div>
+
+                {% endif %}
             </div>
         
        
 
         
-        {% elif user.user_type == "admin" %}
+        {% elif user_type == "admin" %}
             <div id ="section" class="row justify-content-center align-items-center">
                 <div class="col-md-5 text-center">
                     {% if user.profile_photo %}
@@ -88,7 +104,6 @@
                 </div>
                 <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
                     <a id="choice" href="{% url 'edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
-                    <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
                     <a id="choice" href="{% url 'admin:index' %}" class="btn btn-primary rounded-pill">View Admin Panel</a>
                     <a id="choice" href="{% url 'staff-panel' %}" class="btn btn-primary rounded-pill">View Staff Panel</a>
 
@@ -98,7 +113,7 @@
             </div>
         
 
-        {% elif user.user_type == "staff" %}
+        {% elif user_type == "staff" %}
             <div id ="section" class="row justify-content-center align-items-center">
                 <div class="col-md-5 text-center">
                     {% if user.profile_photo %}
@@ -111,7 +126,6 @@
                 </div>
                 <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
                     <a id="choice" href="{% url 'edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>
-                    <a id="choice" href="{% url 'user-badge' %}" class="btn btn-primary rounded-pill">View Badge</a>
                     <a id="choice" href="{% url 'staff-panel' %}" class="btn btn-primary rounded-pill">View Staff Panel</a>
                     <a id="choice" href="{% url 'logout' %}" class="btn btn-primary rounded-pill">Log out</a>
 
@@ -128,7 +142,6 @@
                         <img src="{% static 'users/images/userprofile.png' %}" alt="Default Profile" >
                     {% endif %}
                     <h3>{{ user.username }}</h3>
-                    <h2><b>{{ user.user_type }}</b></h2>
                 </div>
                 <div id="mybuttons" class="col-md-5 d-flex flex-column gap-4">
                     <a id="choice" href="{% url 'edit-profile' %}" class="btn btn-primary rounded-pill">Edit Profile Information</a>

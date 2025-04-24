@@ -6,6 +6,7 @@ from .models import CustomUser
 from django.core.exceptions import ValidationError
 from django.shortcuts import redirect
 from .models import IdealPetProfile
+from .models import FosteringApplication
 
 
 # Import export function
@@ -47,7 +48,7 @@ class CustomUserAdmin(ImportExportModelAdmin, UserAdmin):
         if obj.user_type in ["admin", "staff"] and obj.fosterer_status != "none":  #raise an error if the user type is admin or staff and fosterer status is not none
             self.message_user(
                 request,
-                "Admin and Staff users cannot have a Fosterer Status, it will be reset to 'None'.",messages.ERROR,)
+                "Admin and Staff users cannot have a fosterer Status, it will be reset to 'None'.",messages.ERROR,)
             
             obj.fosterer_status = "none"  
             obj.save()  
@@ -62,3 +63,11 @@ class IdealPetProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'species', 'dog_breed', 'cat_breed', 'min_age', 'max_age')
     search_fields = ('user__username', 'species', 'breed')
     filter_horizontal = ('character_traits', 'allergies', 'disabilities')
+
+
+@admin.register(FosteringApplication)
+class FosteringApplicationAdmin(admin.ModelAdmin):
+    list_display = ['user', 'submitted_at','first_name', 'last_name', 'date_of_birth', 'address', 'phone_number', 'email']
+    readonly_fields = ['submitted_at']
+
+

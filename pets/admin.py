@@ -30,7 +30,7 @@ class PetProfileAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
     filter_horizontal = ('character_traits','allergies','disabilities')
 
-    # display fostering status
+    # display fostering status // future addition
     def foster_status(self, obj):
         return "Available" if obj.fosterer is None else f"Fostered"
 

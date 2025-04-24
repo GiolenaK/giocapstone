@@ -4,12 +4,7 @@
 
 
 {% block head %}
-
-<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-
 <style>
-    
-    
     h2{
         font-family: 'Montserrat';
        
@@ -67,17 +62,30 @@
 
     #section{
     margin-bottom: 20%;
+    gap:50px;
 }
 
+    #left{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
 
-#profile-preview {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
+    #right{
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(255, 255, 254);
+        width:500px;
+    }
+    #profile-preview {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
 </style>
 {% endblock %}
 
@@ -88,7 +96,7 @@
     <div id="section" >
         <h2>Edit Profile Information</h2>
         <div id="section" class="row justify-content-center">
-            <div class="col-md-4 text-center">
+            <div id="left">
                 <form id="image-upload-form" enctype="multipart/form-data">
                     {% csrf_token %}
                     <input type="file" name="image" id="profile-image-input" style="display: none;" />
@@ -103,7 +111,7 @@
                 
             </div>
             <div class="vl"></div>
-            <div class="col-md-5 ">
+            <div class="right">
                 <form method="POST">
                     {% csrf_token %}
                     
@@ -150,6 +158,7 @@
 
 
 <script>
+    /* get image file */
     document.getElementById('image-button').addEventListener('click', function () {
         document.getElementById('profile-image-input').click();
     });

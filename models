@@ -1,0 +1,6 @@
+// Django Models
+digraph {
+	A [label=ModelA]
+	B [label=ModelB]
+	A -> B [label=ForeignKey]
+}

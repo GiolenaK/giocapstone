@@ -4,19 +4,23 @@
 {% block head %}
 <style>
 
-.pet-thumb {
+.pet-image {
   width: 80px;
   height: 80px;
   object-fit: cover;
   border-radius: 30px; 
-}
+  }
+
+.table{
+    margin-bottom:100px;
+  }
 
 </style>
 
 {% endblock %}
 {% block content %}
 <div class="container col-lg-11"> 
-<h2> pet addition</h2>
+<h2> Edit Existing Pets</h2>
 
 <table class="table">
     <thead>
@@ -35,21 +39,25 @@
         <th scope="col">Disabilities</th>
         <th scope="col">Image</th>
         <th scope="col"> </th>
+        <th scope="col"> </th>
       </tr>
     </thead>
+
+
     <tbody>
         {% for pet in pets %}
         <tr>
-          
           <th scope="row">{{ forloop.counter }}</th>
           <td>{{ pet.name }}</td>
           <td>{{ pet.species }}</td>
           <td>{{ pet.gender|slice:":1"|upper }}</td>
           <td>{{ pet.age }}</td>
           <td>{{ pet.size }}</td>
-          <td>{{ pet.breed }}</td>
+          <td>{{ pet.get_breed_display }}</td>
           <td>{{ pet.fur }}</td>
           <td>{{ pet.shelter_arrival|date:"d/m/y" }}</td>
+
+          <!-- Loop through character trait tags -->
           <td>
             {% for tag in pet.character_traits.all %}
               {{ tag.name }}<br>
@@ -58,6 +66,7 @@
             {% endfor %}
           </td>
           
+          <!-- Loop through allergy tags -->
           <td>
             {% for tag in pet.allergies.all %}
               {{ tag.name }}<br>
@@ -65,19 +74,32 @@
               None
             {% endfor %}
           </td>
+
+          <!-- Loop through disability tags -->
           <td>
             {% for tag in pet.disabilities.all %}
               {{ tag.name }}<br>
             {% empty %}
               None
             {% endfor %}
-          </td>       
+          </td>    
+          
+          
           <td>
-            <img src="{{ pet.image.url }}" class="pet-thumb" alt="pet">
-          </td>
+            {% if pet.image %}
+            <img class="pet-image" src="{{ pet.image.url }}" alt="Pet Image">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}           
+         </td>
           <td>
             <a href="{% url 'edit-pet' pet.pk %}" class="btn btn-lg">✏️</a>
           </td>
+          <td>
+          <a href="{% url 'delete-pet' pet.pk %}" class="btn btn-danger btn-lg" onclick="return confirm('Are you sure you want to delete this pet?')">
+            🗑
+        </a>
+      </td>
 
         {% endfor %}
       </tbody>

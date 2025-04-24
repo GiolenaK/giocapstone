@@ -1,0 +1,141 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+
+.pet-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 30px; 
+}
+
+.add{
+    background-color: #ACE791!important;
+    border-color: #433B2D !important;
+    border-radius:15px !important;
+    border-width: 2px !important;
+    color: black !important;
+    height:50px;
+    width:100px;
+    margin-top: 10px;
+    align-content: center;
+    font-weight: bold!important;
+}
+
+.add:hover{
+    background-color: #60c531 !important;
+    color: white !important;
+    transition: 0.3s;
+}
+
+
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-right:65px;
+}
+
+
+.table{
+    margin-bottom:100px;
+}
+
+</style>
+
+{% endblock %}
+{% block content %}
+<div class="container col-lg-11"> 
+    <div class="wrapper">
+        <h2> Add New Pets</h2>
+        <a  href="{% url 'add-pet-form' %}">
+          <button class="add">+</button>
+        </a>  
+    </div>
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Species</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Age</th>
+          <th scope="col">Size</th>
+          <th scope="col">Breed</th>
+          <th scope="col">Fur</th>
+          <th scope="col">Arrival</th>
+          <th scope="col">Character</th>
+          <th scope="col">Allergies</th>
+          <th scope="col">Disabilities</th>
+          <th scope="col">Image</th>
+          <th scope="col"> </th>
+        </tr>
+      </thead>
+
+
+  <tbody>
+      {% for pet in pets %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ pet.name }}</td>
+          <td>{{ pet.species }}</td>
+          <td>{{ pet.gender|slice:":1"|upper }}</td>
+          <td>{{ pet.age }}</td>
+          <td>{{ pet.size }}</td>
+          <td>{{ pet.breed }}</td>
+          <td>{{ pet.fur }}</td>
+          <td>{{ pet.shelter_arrival|date:"d/m/y" }}</td>
+
+          <!-- Loop through character trait tags -->
+          <td>
+            
+            {% for tag in pet.character_traits.all %}
+              {{ tag.name }}<br>
+            {% empty %}
+              None
+            {% endfor %}
+            
+          </td>
+          
+          <!-- Loop through allergy tags -->
+          <td>
+
+            {% for tag in pet.allergies.all %}
+              {{ tag.name }}<br>
+            {% empty %}
+              None
+            {% endfor %}
+
+          </td>
+
+          <!-- Loop through disability tags -->
+          <td>
+
+            {% for tag in pet.disabilities.all %}
+              {{ tag.name }}<br>
+            {% empty %}
+              None
+            {% endfor %}
+
+          </td>    
+          
+          
+          <td>
+
+            {% if pet.image %}
+            <img class="pet-image" src="{{ pet.image.url }}" alt="Pet Image">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}  
+
+          </td>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+{% endblock content %}

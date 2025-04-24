@@ -8,10 +8,10 @@
         border-color: #433B2D !important;
         border-radius:15px !important;
         border-width: 2px !important;
-        height: 4rem;
+        height: 60px;
         color:black;
-        width:12rem;
-        margin-top: 1rem;
+        width:200px;
+        margin-top: 15px;
     }
 
     .btn:hover {
@@ -49,7 +49,7 @@
         width: 100%; 
         height: 500px;
         margin: 0 auto;
-        margin-top: 40rem;
+        margin-top: 800px;
         z-index: 1;
 }
 
@@ -88,6 +88,8 @@
     height: 700px; 
     border-radius: 15px;
     position: relative;
+    max-width: 90%; 
+    height: auto;
 
 }
 
@@ -103,21 +105,10 @@
     z-index: -1;
 }
 
-#banners {
-    max-width: 90%; 
-    height: auto;
-}
 
 .fostering-section {
     justify-items: center;
     margin-top:50px;
-}
-
-#mountain-image{
-    width: 100%; 
-    height: 800px; 
-    position: relative;
-    margin-top: -10rem;
 }
 
 
@@ -134,27 +125,37 @@
     z-index: 1;
     flex-direction: column;
     display: flex;
+    color:black;
 }
 
+.pets-section h2{
+    color: black!important;
+
+}
 
 .pets-container {
     display: flex;
-    gap: 5rem;
+    gap: 50px;
+    height:300px;
+    margin-bottom:30px;
 }
 
 .pet-card {
     justify-content: center; 
     align-items: center; 
-    height:250px;
-    width:300px;
+    height:350px;
+    width:400px;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
     overflow:hidden;
+    
 }
 
 .pet-card img {
-    width: 100%;
+    width: 300px;
+    height:300px;
+    object-fit: cover;
     border-radius: 10px;
     border: #433B2D !important;
     border-width: 2px !important;
@@ -204,11 +205,12 @@
     height: auto;
     transform: translate(-50%, -50%);
     object-fit: cover;
-    filter: brightness(100%) contrast(80%); 
+    filter: brightness(100%) contrast(100%); 
+    opacity:50%;
 }
 
 h1, h3, .fostering-section h2, .fostering-section , .team-section h2 {
-    color: white;
+    color: rgb(0, 0, 0);
     font-weight: 300;
 }
 </style>
@@ -216,6 +218,8 @@ h1, h3, .fostering-section h2, .fostering-section , .team-section h2 {
 
 {% block content %}
 <div class="container col-lg-9">
+
+    <!-- VIDEO -->
     <div class="video-container">
         <video autoplay muted loop>
             <source src="{% static 'pets/images/homevideo.mp4' %}" type="video/mp4">
@@ -223,83 +227,78 @@ h1, h3, .fostering-section h2, .fostering-section , .team-section h2 {
         </video>
     </div>
 
-
-        <h1>FurryFriends</h1>
-        <h3>Looking to offer a temporary home to a little pet?</h3>
-        <div class="banner-wrapper">
-            <img id="banners" src="{% static 'pets/images/Banners.png' %}" alt="Banners"></div>
-
-
-        <div class="carousel-container">
-            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-            
-            <div class="carousel-slide ">
-                <div class="carousel-left">
-                    <h2 id="pet-name">Meet Doodles!</h2>
-                    <img id="pet-image" src="{% static 'pets/images/doodles.jpg' %}" alt="Pet Image">
-                </div>
-                <div class="pet-info">
-                    
-                    <p id="pet-description">Doodles came to us 5 months ago as a result of the Summer forest fires.
-                        He is cuddly, cute, and loves to play!</p>
-                    <button class="btn btn-primary">LEARN MORE</button>
-                </div>
-            </div>
-
-            <button class="next" onclick="changeSlide(1)">&#10095;</button>
-        </div>
-
-
-
-        <div class="fostering-section">
-            <div class="text-container" style="text-align: center;">
-                <h2>By fostering, you aid us</h2>
-                <p>When you decide to house a pet for a temporary time,<br>
-                    it allows us to bring in more pets to the shelter,<br>
-                    therefore, more pets can have the care they deserve</p>
-                    <a href="{% url 'about' %}">
-                <button type="button" class="btn btn-primary">ABOUT US</button></a>
-            </div>
-            
-        
-
-
-        <div class="pets-section">
-            <div id="title">
-                <h2>Our lil buddies~</h2>
-            </div>
-            <div class="pets-container">
-                <div class="pet-card">
-                    <img src="{% static 'pets/images/doodles.jpg' %}" alt="Maxie">
-                    <p>Maxie</p>
-                </div>
-                <div class="pet-card">
-                    <img src="{% static 'pets/images/doodles.jpg' %}" alt="Sydney">
-                    <p>Sydney</p>
-                </div>
-                <div class="pet-card">
-                    <img src="{% static 'pets/images/doodles.jpg' %}" alt="Looky">
-                    <p>Looky</p>
-                </div>
-            </div>
-        </div>
-        </div>
-        
-
-
-
-        <div class="team-section">
-            <h2>Our Team</h2>
-            <img src="{% static 'pets/images/ourteam.jpg' %}" alt="Team Placeholder">
-            <a href="{% url 'contact' %}">
-                <button type="button" class="btn btn-primary">CONTACT US</button></a>
-        </div>
-
-
-
-        </div>
+    <!-- First Part -->
+    <h1>FurryFriends</h1>
+    <h3>Looking to offer a temporary home to a little pet?</h3>
+    <div class="banner-wrapper">
+        <a href="{% url 'pet-list' %}"> 
+            <img id="banners" src="{% static 'pets/images/Banners.png' %}" alt="Banners"></a>
     </div>
+
+    <!-- Meet the pets CAROUSEL -->
+    <div class="carousel-container">
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        
+        <div class="carousel-slide ">
+            <div class="carousel-left">
+                <h2 id="pet-name">Meet Doodles!</h2>
+                <img id="pet-image" src="{% static 'pets/images/doodles.jpg' %}" alt="Pet Image">
+            </div>
+            <div class="pet-info">
+                <p id="pet-description">Doodles came to us 5 months ago as a result of the Summer forest fires.
+                    He is cuddly, cute, and loves to play!</p>
+                <a href="{% url 'pet-list' %}">
+                <button class="btn btn-primary">LEARN MORE</button> </a>
+            </div>
+        </div>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
+    <!-- Fostering text part -->
+    <div class="fostering-section">
+        <div class="text-container" style="text-align: center;">
+            <h2>By fostering, you aid us</h2>
+            <p>When you decide to house a pet for a temporary time,<br>
+                it allows us to bring in more pets to the shelter,<br>
+                therefore, more pets can have the care they deserve</p>
+                <a href="{% url 'about' %}">
+            <button type="button" class="btn btn-primary">ABOUT US</button></a>
+        </div>  
+    </div>
+
+    <!-- Looping through three random pets -->
+    <div class="pets-section">
+        <div id="title">
+            <h2>Our lil buddies~</h2>
+        </div>
+        <div class="pets-container">
+            {% for pet in random_pets %}
+                <div class="pet-card">
+                {% if pet.image %}
+                    <img src="{{ pet.image.url }}" alt="{{ pet.name }}">
+                {% else %}
+                    <img src="{% static 'pets/images/placeholder.jpg' %}" alt="No image">
+                {% endif %}
+                <p>{{ pet.name }}</p>
+                </div>
+            {% endfor %}
+            </div>
+    </div>
+    
+    <!-- Our Team part -->
+    <div class="team-section">
+        <h2>Our Team</h2>
+        <img src="{% static 'pets/images/ourteam.jpg' %}" alt="Team Placeholder">
+        <a href="{% url 'contact' %}">
+            <button type="button" class="btn btn-primary">CONTACT US</button></a>
+    </div>
+
+</div>
+    
     <script>
+
+        /* for the carousel */
+
         const pets = [
             {
                 name: "Meet Doodles!",

@@ -1,0 +1,93 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+    .wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-right:65px;
+    }
+
+
+    .table{
+        margin-bottom:100px;
+    }
+
+    #user-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 30px;
+
+    }
+
+    select {
+    width: 150px; 
+    padding: 4px; 
+    font-size: 14px;
+    border-radius: 15px;
+    height:40px
+    }
+</style>
+
+{% endblock %}
+{% block content %}
+<div class="container col-lg-11"> 
+    <div class="wrapper">
+        <h2> Badge Configuration</h2>
+       
+    </div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Badge Status</th>
+        <th scope="col">Profile Image</th>
+
+      </tr>
+    </thead>
+
+
+    <tbody>
+      {% for user in users %}
+      <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+      
+          <td>
+              <!-- Foster status dropdown -->
+              <form method="post" action="{% url 'update_foster_status' %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="user_id" value="{{ user.id }}">
+                  <select name="fosterer_status" onchange="this.form.submit()">
+                      {% for value, label in user_fosterer_status %}
+                          <option value="{{ value }}" {% if user.fosterer_status == value %}selected{% endif %}>
+                              {{ label }}
+                          </option>
+                      {% endfor %}
+                  </select>
+              </form>
+          </td>
+      
+          <td>
+              <!-- profile pic -->
+              {% if user.profile_photo %}
+                  <img id="user-image" src="{{ user.profile_photo.url }}" alt="Profile">
+              {% else %}
+                  <img id="user-image" src="{% static 'userprofile.png' %}" alt="Default Profile" >
+              {% endif %}
+          </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}

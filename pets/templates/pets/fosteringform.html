@@ -72,34 +72,35 @@ label[for="proofOfIdentity"], label[for="proofOfResidence"] {
             <h2>Fostering Registration Form</h2>
             <h5>Please, fill out all of the fields with an "*" next to them.</h5>
         </div>
-        <form>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="row">
                 <div id="left-side" class="col-5">
                     <div class="form-group">
                         <div class="form-group">
                             <label for="firstName">First Name*</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+                            <input type="text" name="firstName" id="firstName" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last Name*</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+                            <input type="text" name="lastName" id="lastName" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="dob">Date of Birth*</label>
-                        <input type="date" class="form-control" id="dob">
+                        <input type="date" name="dob" id="dob" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="address">Address*</label>
-                        <input type="text" class="form-control" id="address" placeholder="Enter Address">
+                        <input type="text" name="address" id="address" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="phoneNumber">Phone Number*</label>
-                        <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
+                        <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="email">Email of Communication*</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter Email">
+                        <input type="email" name="email" id="email" class="form-control">
                     </div>
     
     
@@ -112,16 +113,16 @@ label[for="proofOfIdentity"], label[for="proofOfResidence"] {
                     <div class="form-group">
                         <label for="proofOfIdentity">Proof of Identity*</label>
                         <div><small>Your ID</small></div>
-                        <input id="identity-button" type="file" class="form-control" id="proofOfIdentity">
+                        <input type="file" name="proofOfIdentity" id="proofOfIdentity">
                     </div>
                     <div class="form-group">
                         <label for="proofOfResidence">Proof of Residence*</label>
                         <div><small>Any document that shows your current address (e.g. electrical/water/gas bill)</small></div>
-                        <input id="residence-button" type="file" class="form-control" id="proofOfResidence">
+                        <input type="file" name="proofOfResidence" id="proofOfResidence">
                     </div>
                     <div class="form-group">
                         <label for="experience">Prior Experience with Animals</label>
-                        <textarea class="form-control" id="experience" rows="4" placeholder="Describe your prior experience with animals"></textarea>
+                        <textarea name="priorExperience" id="priorExperience"></textarea>
                     </div>
     
                     <div id="bottom-part">

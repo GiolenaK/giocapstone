@@ -4,7 +4,7 @@ from django.db import models
 
 def suggest_pets_for_user(user):
     from pets.models import PetProfile
-
+    #in case user hasn't set an ideal pet profile
     if not hasattr(user, 'ideal_pet_profile'):
         if not hasattr(user, 'ideal_pet_profile'):
             print("No ideal pet profile found.")
@@ -13,14 +13,19 @@ def suggest_pets_for_user(user):
     ideal = user.ideal_pet_profile
     pets = PetProfile.objects.filter(fosterer__isnull=True)
 
-    if ideal.species and ideal.species.strip().lower() == 'dog':
+
+#filtering for species first and then for breed
+    if ideal.species.strip().lower() == 'dog': 
+        pets = pets.filter(species__iexact='dog')
         if ideal.dog_breed and ideal.dog_breed.strip():
-                pets = pets.filter(breed__iexact=ideal.dog_breed.strip())
-    elif ideal.species and ideal.species.strip().lower() == 'cat':
+            pets = pets.filter(breed__iexact=ideal.dog_breed.strip())
+
+    elif ideal.species.strip().lower() == 'cat':
+        pets = pets.filter(species__iexact='cat')
         if ideal.cat_breed and ideal.cat_breed.strip():
             pets = pets.filter(breed__iexact=ideal.cat_breed.strip())
 
-
+#continuing with filtering for every other attribute that may be set
     if ideal.min_age is not None:
         pets = pets.filter(age__gte=ideal.min_age)
 

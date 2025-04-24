@@ -1,0 +1,49 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+.table{
+    margin-bottom:200px;
+}
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="container col-lg-11"> 
+    <div class="wrapper">
+        <h2> Fostering Forms</h2>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Date Submitted</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+            {% for form in forms %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ form.user }}</td>
+                <td>{{ form.first_name }}</td>
+                <td>{{ form.last_name }}</td>
+                <td>{{ form.submitted_at }}</td>
+                <td><a href="{% url 'form-review' application_id=form.id %}" class="btn btn-lg">👁️</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+  </div>
+  
+
+{% endblock %}

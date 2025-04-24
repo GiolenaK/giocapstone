@@ -10,15 +10,16 @@
         font-size: 20px;
     }
 
-    h1,h3{
-        font-family: 'Montserrat';
+    h2{
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 
     #section{
-    margin-bottom: 20%;
-
-    
-}
+        margin-bottom: 20%;
+        display: flex !important;;
+        align-items: center;
+    }
 
 </style>
 
@@ -26,95 +27,62 @@
 
 
 {% block content %}
-<div class="container col-lg-10"> 
+<div class="container col-lg-9"> 
 
-        <h1>My Badge</h1>
-        {% if status == "Accepted" %}
-        <div id ="section" class="row justify-content-center align-items-center">
-            <div class="col-md-5 text-center">
-                <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-                <h3><b>Accepted</b></h3>
+        <h2>My Badge</h2>
+        {% if user.fosterer_status == "accepted" %}
+            <div id ="section">
+                <div class="col-md-5 text-center">
+                    <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
+                    <h3><b>Accepted</b></h3>
+                </div>
+                <div id="badge-text">
+                    <h3><b>You have our badge of approval!</b></h3>
+                    <hr>
+                    <p>You can now browse on our pets list and place a request to foster freely</p>
+                    <p>We are glad you are part of the family!</p>
+                </div>
             </div>
-            <div id="badge-text" class="col-md-7 d-flex flex-column gap-4">
-                <h3><b>You have our badge of approval!</b></h3>
-                <hr>
-                <p>You can now browse on our pets list and
-                    place a request to foster freely</p>
-                <p>We are glad you are part of the family!</p>
-            </div>
-        </div>
-    </div>
-        {% elif status == "Admin" %}
-        <div id ="section" class="row justify-content-center align-items-center">
-            <div class="col-md-5 text-center">
-                <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-                <h3><b>Admin</b></h3>
-            </div>
-            <div id="badge-text" class="col-md-7 d-flex flex-column gap-4">
-                <h3><b>You have an admin badge!</b></h3>
-                <hr>
-                <p>You are free to edit pet information
-                    as well as staff information.</p>
-                <p>You can also review potential fostering
-                    requests!</p>
-            </div>
-        </div>
-        </div>
         
-        {% elif status == "Staff" %}
-        <div id ="section" class="row justify-content-center align-items-center">
-            <div class="col-md-5 text-center">
-                <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-                <h3><b>Staff</b></h3>
+      
+    
+        {% elif user.fosterer_status == "pending" %}
+            <div id ="section">
+                <div class="col-md-5 text-center">
+                    <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
+                    <h3><b>Pending</b></h3>
+                </div>
+                <div id="badge-text">
+                    <h3><b>We are still pending your request to become a foster parent!</b></h3>
+                    <hr>
+                    <p>Please, wait patiently as we go through the process of reviewing your form.</p>
+                </div>
             </div>
-            <div id="badge-text" class="col-md-7 d-flex flex-column gap-4">
-                <h3><b>You have a staff badge!</b></h3>
-                <hr>
-                <p>You are free to edit pet information
-                    and review fostering requests!</p>
-            </div>
-        </div>
-    </div>
-        {% elif status == "Pending" %}
-        <div id ="section" class="row justify-content-center align-items-center">
-            <div class="col-md-5 text-center">
-                <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-                <h3><b>Pending</b></h3>
-            </div>
-            <div id="badge-text" class="col-md-7 d-flex flex-column gap-4">
-                <h3><b>We are still pending your request to become a foster parent!</b></h3>
-                <hr>
-                <p>Please, wait patiently as we go through
-                    the process of reviewing your form.</p>
-            </div>
-        </div>
-    </div>
+    
         
-        {% elif status == "Rejected" %}
-        <div id ="section" class="row justify-content-center align-items-center">
-            <div class="col-md-5 text-center">
-                <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
-                <h3><b>Rejected</b></h3>
-        </div>
-            <div id="badge-text" class="col-md-7 d-flex flex-column gap-4">
-                <h3><b>Uh oh! Seems like we weren’t able to
-                    approve your request!</b></h3>
-                <hr>
-                <p>We still thank you for showing interest
-                    in our shelter!</p>
+        {% elif user.fosterer_status == "rejected" %}
+            <div id ="section" >
+                <div class="col-md-5 text-center">
+                    <img src="{% static 'users/images/userprofile.png' %}" alt="Your profile picture" width="250px" height="auto">
+                    <h3><b>Rejected</b></h3>
+                </div>
+                <div id="badge-text">
+                    <p>Uh oh! Seems like we weren’t able to approve your request! Don't worry though, you can still visit the shelters and be a volunteer!</p>
+                    <p>We still thank you for showing interest
+                        in our shelter!</p>
+                </div>
             </div>
-        </div>
-    </div>  
+    
         
         {% else %}
-        <div id ="section" class="row justify-content-center align-items-center">
-            <div id="badge-text" class="col-md-9 d-flex flex-column gap-4">
-                <p>You currently have no awaiting badge approvals. If you are looking to get a fostering badge, make sure to submit a <u>form!</u></p>
+            <div id ="section">
+                <div id="badge-text">
+                    <p>You currently have no awaiting badge approvals. If you are looking to get a fostering badge, make sure to submit a <u>form!</u></p>
+                </div>
             </div>
+        {% endif %}
         </div>
-        
-        </div>
+    </div>
 
 
-{% endif %}
 {% endblock content %}

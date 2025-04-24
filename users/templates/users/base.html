@@ -71,9 +71,9 @@
             <a href="{% url 'user-profile' %}">
                 {% if user.profile_photo %}
                 <img src="{{ user.profile_photo.url }}" alt="Profile" width="250px" height="auto">
-              {% else %}
+                {% else %}
                 <img src="{% static 'users/images/userprofile.png' %}" alt="Default Profile" width="250px" height="auto">
-              {% endif %}
+                {% endif %}
                           
             </a>
         </div>
@@ -85,18 +85,13 @@
 
   <div class="container col">
 
-    {% block content %}{% endblock %}
-    <!-- <h1>HELLOO TEST</h1>
-      <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor sagittis lectus, eu ullamcorper metus lobortis quis. Praesent neque turpis, aliquet in rutrum non, mattis eu orci. Mauris hendrerit at lacus quis condimentum. Ut fringilla urna eleifend, tristique leo eget, eleifend augue. Fusce aliquam eu mi vitae pharetra. Fusce ullamcorper erat hendrerit, hendrerit dolor id, tristique enim. Donec malesuada ipsum vitae dignissim suscipit. Donec libero nisl, viverra in vulputate non, dictum at tortor. Maecenas at tempor nibh. Pellentesque vulputate lobortis nulla. Praesent urna risus, vehicula a metus vitae, iaculis vulputate lorem. Cras efficitur faucibus lectus, non bibendum eros pulvinar at. Integer accumsan nunc nec eleifend tempor. Phasellus ex ante, rhoncus vel posuere eu, condimentum a ipsum.
-
-      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam risus nulla, imperdiet suscipit mollis at, ultrices sit amet lacus. Mauris ut lacus maximus, iaculis velit sed, scelerisque diam. Praesent vitae nunc dignissim, mattis mi at, ornare est. Ut et mollis nisl, in pellentesque justo. Vivamus eget risus rhoncus, varius est at, ullamcorper felis. Curabitur sit amet facilisis erat. Donec id mattis augue, eu imperdiet dui. Ut aliquet diam et magna accumsan congue. Quisque interdum rhoncus pretium. Integer sit amet tellus in lacus porttitor blandit.
-      
-      Aenean velit massa, aliquam ut nunc sit amet, dapibus iaculis nibh. Phasellus molestie nisl id urna tempor, nec pulvinar mi pretium. Nulla dui nibh, viverra vel placerat a, volutpat sit amet mi. Aenean eu lectus ac risus rhoncus lacinia eu egestas odio. Nam at orci eget ante ultrices euismod et finibus enim. Morbi vitae iaculis purus, nec semper neque. Nunc eget nisi vitae justo vestibulum imperdiet.
-      
-      Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis non mauris in ex eleifend rhoncus. Nam egestas, lacus id feugiat iaculis, ante libero luctus velit, id porttitor diam nulla sed ex. Phasellus turpis tellus, gravida in lacinia sit amet, condimentum nec metus. Maecenas aliquet lacinia orci, vel suscipit orci. Fusce ac nisi imperdiet, laoreet tellus non, placerat felis. Fusce at egestas leo. Mauris laoreet nisi lorem. Curabitur a commodo nisl, a tristique justo. Proin in mattis diam. Fusce at pellentesque nibh, ut ultrices nisl. Duis finibus, libero eu auctor auctor, dolor sapien tincidunt dolor, vel lobortis ipsum libero ac orci. Nullam ultricies hendrerit nisi ut dictum. Aliquam mollis at eros sit amet ultrices. Proin leo lorem, posuere a vehicula non, tempus a erat. Cras accumsan eu odio non rutrum.
-      
-      Maecenas convallis efficitur magna, id eleifend lectus congue eu. Sed vulputate dapibus ipsum id rutrum. Maecenas sodales neque nec elit tincidunt, ac rhoncus ante eleifend. Donec tristique sit amet velit in fringilla. Mauris malesuada, odio quis aliquet vestibulum, sapien justo maximus nunc, sed egestas odio mauris quis mauris. Vestibulum pharetra sodales nunc at tincidunt. Morbi vitae venenatis arcu.</P> -->
+    {% block content %}
+    {% endblock %}
+   
   </div>
+
+
+<!-- FOOTER -->
 
 <footer id="myfooter" class="footer col-12 justify-content center ">
     <div class="container ">
@@ -149,41 +144,28 @@
     </div>
 </footer>
 
+   
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
 
-    <!-- Bootstrap Bundle JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
+    <!-- Dialogflow Bot !-->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+        intent="WELCOME"
+        chat-title="FD"
+        agent-id="4318b5ae-4cb0-45d9-8782-083ef0be520a"
+        language-code="en"
+        chat-icon="{% static 'users/images/logo.png' %}">
     
-        <!-- Bootstrap Bundle JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </df-messenger>    
 
-       
-
-        <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-        <df-messenger
-          intent="WELCOME"
-          chat-title="FD"
-          agent-id="4318b5ae-4cb0-45d9-8782-083ef0be520a"
-          language-code="en"
-        ></df-messenger>    </body>
-    </html>
-    
-
-
-
-     <!-- jQuery PopperBootstrapJS Tagify -->
+     <!-- jQuery  -->
      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+     
+    <!-- PopperBootstrapJS -->
      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
-  
-     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
-
+     
+    
     </body>
 </html>

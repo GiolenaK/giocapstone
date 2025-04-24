@@ -1,53 +1,36 @@
-
 {% extends "users/base.html" %}
-<!-- Select2 CSS -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
-<!-- jQuery (required) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Select2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 {% load static %}
-
 {% block head %}
 
 <style>
 
-#form-part{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display:flex
-}
+  #form-part{
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display:flex
+  }
 
+  button,#back{
+      background-color: #ACE791!important;
+      border-color: #433B2D !important;
+      border-radius:15px !important;
+      border-width: 2px !important;
+      color: black !important;
+      height:60px;
+      width:200px;
+      margin-top: 10px;
+      align-content: center;
+      font-weight: bold!important;
+      margin-bottom:100px;
+      
+  }
 
-
-button,#back{
-    background-color: #ACE791!important;
-    border-color: #433B2D !important;
-    border-radius:15px !important;
-    border-width: 2px !important;
-    color: black !important;
-    height:60px;
-    width:200px;
-    margin-top: 10px;
-    align-content: center;
-    font-weight: bold!important;
-    margin-bottom:100px;
-    
-}
-
-label{
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 10px;
-    
-}
-.vl {
-  border-left: 6px solid green;
-  height: 500px;
-}
-
+  label{
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 10px;
+      
+  }
 
 
 </style>
@@ -101,7 +84,6 @@ label{
             <div id="field">{{ form.shelter_arrival }}</div>
         </div>
     </div>
-    <vl></vl>
     <div class="col-lg-6">
       <div class="mb-3">
         <label for="{{ form.character_traits.id_for_label }}">Character Traits:</label>

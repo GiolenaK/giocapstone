@@ -3,15 +3,11 @@
 
 {% block head %}
 <style>
-
-
-
     .vl {
         border-left: 2px solid rgb(3, 3, 3);
         height: 500px;
         justify-items: center ;
         align-self: center;
-        
     }
 
     ul{
@@ -33,84 +29,88 @@
     width: 90%;  
     max-width:350px; 
     z-index: -1; 
-}
+    }
 
 
-#toxic-foods{
-    margin-top:3%;
-    position: relative; 
-    text-align: center;
-    margin-bottom: 10%;
-}
+    #toxic-foods{
+        margin-top:3%;
+        position: relative; 
+        text-align: center;
+        margin-bottom: 10%;
+    }
 
 
-.centered {
-    list-style: none;
-    padding: 20px;
-    margin: 0;
-    position: relative;
-}
+    .centered {
+        list-style: none;
+        padding: 20px;
+        margin: 0;
+        position: relative;
+    }
 
-.row {
-    display: flex;
-    align-items: flex-start; 
-    gap: 20px; 
-}
+    .row {
+        display: flex;
+        align-items: flex-start; 
+        gap: 20px; 
+    }
 
-.col-5{
-    margin-bottom: 10%;
-}
+    .col-5{
+        margin-bottom: 10%;
+    }
 
-.cloud-container {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    height: auto; 
-    margin-top: 50px; 
-    text-align: center;
-}
-
-
-.cloud-content {
-    position: relative;
-    width: 600px; 
-    padding: 20px;
-    transform: translateY(-15px); 
-}
+    .cloud-container {
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        height: auto; 
+        margin-top: 50px; 
+        text-align: center;
+    }
 
 
-.background-cloud {
-    position: absolute;
-    top: 55%; 
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 110%; 
-    max-width: 750px; 
-    z-index: -1;
-}
-
-.cloud-title {
-    position: relative;
-    text-align: left;
-    padding-left: 40px; 
-    font-weight: bold;
-    margin-bottom: -10px;
-    padding-bottom: 5px;
-    transform: translateY(-10px); 
-}
+    .cloud-content {
+        position: relative;
+        width: 600px; 
+        padding: 20px;
+        transform: translateY(-15px); 
+    }
 
 
-#asterisk-text {
-    position: relative;
-    list-style: none;
-    padding: 10px 40px;
-    text-align: left;
-    font-size: 14px;
-    z-index: 1;
-    margin: 0;
-    line-height: 1.4;
-    transform: translateY(-10px); 
-}
+    .background-cloud {
+        position: absolute;
+        top: 55%; 
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 110%; 
+        max-width: 750px; 
+        z-index: -1;
+    }
+
+    .cloud-title {
+        position: relative;
+        text-align: left;
+        padding-left: 40px; 
+        font-weight: bold;
+        margin-bottom: -10px;
+        padding-bottom: 5px;
+        transform: translateY(-10px); 
+    }
+
+
+    #asterisk-text {
+        position: relative;
+        list-style: none;
+        padding: 10px 40px;
+        text-align: left;
+        font-size: 14px;
+        z-index: 1;
+        margin: 0;
+        line-height: 1.4;
+        transform: translateY(-10px); 
+    }
+
+    #dogs-cats{
+        justify-content: center;
+    }
 
 
 </style>
@@ -119,14 +119,13 @@
 {% block content %}
 <div class="container" id="toxic-foods">
     <h2 class="text-center">Toxic Foods</h2>
-    <div class="row justify-content-center">
-        
+    <div id='dogs-cats' class="row">
+
+        <!-- DOGS SECTION -->
         <div class="col-5 ">
             <h3><u>Dogs</u></h3>
             <div class="position-relative">
-                <img src="{% static 'pets/images/rectangleframe.svg' %}" 
-                     alt="" 
-                     class="background-shape">
+                <img src="{% static 'pets/images/rectangleframe.svg' %}" alt="" class="background-shape">
                 <ul class="centered">
                     <li>Alcohol</li>
                     <li>Avocado</li>
@@ -149,13 +148,11 @@
 
 <div class="vl"></div>
 
-    
+        <!-- CATS SECTION -->
         <div class="col-5">
             <h3><u>Cats</u></h3>
             <div class="position-relative">
-                <img src="{% static 'pets/images/rectangleframe.svg' %}" 
-                     alt="" 
-                     class="background-shape">
+                <img src="{% static 'pets/images/rectangleframe.svg' %}" alt="" class="background-shape">
                 <ul class="centered">
                     <li>Alcohol</li>
                     <li>Avocado</li>
@@ -171,13 +168,14 @@
                     <li>Raw Eggs</li>
                     <li>Raw Meat and Fish*</li>
                     <li>Salt</li>
-                    <li>Xylitol*</li>
-                    
+                    <li>Xylitol*</li> 
                 </ul>
             </div>
         </div>
     </div>
 
+
+    <!-- More info -->
     <div class="cloud-container">
         <div class="cloud-content">
             <h3 class="cloud-title">***</h3>
@@ -194,7 +192,5 @@
             </ul>
         </div>
     </div>
-    
-    
 </div>
 {% endblock content %}

@@ -5,7 +5,7 @@
 
 {% block head %}
 <style>
-#choice{
+    #choice{
         background-color: #FFFED7;
         border-radius: 15px !important;
         width: 70%;
@@ -43,10 +43,10 @@
         <h2>Staff Panel</h2
         <div id="options">
             <div id="mybuttons" >
-                <a id="choice" href="#" class="btn btn-primary rounded-pill">Add Pets</a>
-                <a id="choice" href="{% url 'edit-pets' %}" class="btn btn-primary rounded-pill">Edit Pets</a>
-                <a id="choice" href="#" class="btn btn-primary rounded-pill">Fostering Applications</a>
-                <a id="choice" href="#" class="btn btn-primary rounded-pill">Badges</a>
+                <a id="choice" href="{% url 'add-pets' %}" class="btn btn-primary rounded-pill">Add New Pets</a>
+                <a id="choice" href="{% url 'edit-pets' %}" class="btn btn-primary rounded-pill">Edit Existing Pets</a>
+                <a id="choice" href="{% url 'fostering-applications' %}" class="btn btn-primary rounded-pill">Fostering Applications</a>
+                <a id="choice" href="{% url 'badge-configuration' %}" class="btn btn-primary rounded-pill">Badges</a>
             </div>
         </div>
     </div>
